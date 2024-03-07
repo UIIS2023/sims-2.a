@@ -1,0 +1,135 @@
+﻿<Page x:Class="SOSTeam.TravelAgency.WPF.Views.TourGuide.DemoPages.CreateTourDemoPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SOSTeam.TravelAgency.WPF.Views.TourGuide.DemoPages"
+      xmlns:tourGuide="clr-namespace:SOSTeam.TravelAgency.WPF.ValidationRules.TourGuide"
+      xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+      mc:Ignorable="d" 
+      d:DesignHeight="950" d:DesignWidth="430"
+      Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"
+      Title="CreateTourDemoPage">
+
+    <Grid>
+        <ScrollViewer x:Name="PageScrollViewer"  VerticalScrollBarVisibility="Hidden">
+            <Grid Height="950" Width="430">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="3*"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="1.2*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Border Grid.Column="0" Grid.Row="10" Grid.ColumnSpan="2" BorderBrush="DarkGray" Margin="10 0 10 0" BorderThickness="0 2 0 0"></Border>
+
+                <!-- Name: -->
+                <Label Grid.Column="0" Grid.Row="0" Content="Name:" HorizontalAlignment="Left" VerticalAlignment="Top" 
+                   Margin="59,10,0,0" FontSize="14"/>
+                <TextBox x:Name="NameTextBox" Grid.Column="0" Grid.Row="0"  Grid.ColumnSpan="2"  HorizontalAlignment="Center" VerticalAlignment="Top" Width="300" Height="25"
+                     Margin="0,34,0,0" BorderBrush="DarkGray" BorderThickness="1.5"/>
+
+                <!-- Country: -->
+                <Label Grid.Column="0" Grid.Row="1" Content="Country:" HorizontalAlignment="Left" VerticalAlignment="Top"
+                   Margin="59,10,0,0" FontSize="14">
+                </Label>
+                <ComboBox Grid.Column="0" Grid.Row="1"  HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="DarkGray" BorderThickness="1.5"
+                      Margin="65,37,0,0" Width="145"
+                      x:Name="CountryComboBox">
+                    <ComboBoxItem Content="Bulgaria"/>
+                </ComboBox>
+                <!-- City: -->
+                <Label Grid.Column="1" Grid.Row="1"  Content="City:" HorizontalAlignment="Left" VerticalAlignment="Top"
+                   Margin="0,10,0,0" FontSize="14">
+                </Label>
+                <ComboBox Grid.Column="1" Grid.Row="1"  HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="DarkGray" BorderThickness="1.5"
+                      Margin="5,37,0,0" Width="145"
+                      x:Name="CityComboBox">
+                    <ComboBoxItem Content="Plovdiv"/>
+                </ComboBox>
+
+                <!-- Description: -->
+                <Label Grid.Column="0" Grid.Row="2"  Content="Description:" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Top"
+                   Margin="59,10,0,0" FontSize="14">
+                </Label>
+                <TextBox x:Name="DescriptionTextBox" Grid.Column="0" Grid.Row="2"  Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Top" Width="300" Height="150"
+                     BorderBrush="DarkGray" BorderThickness="1.5"
+                     Margin="0,43,0,0" TextWrapping="Wrap">
+                </TextBox>
+                <!-- Language: -->
+                <Label Grid.Column="0" Grid.Row="3"  Content="Language:" HorizontalAlignment="Left" VerticalAlignment="Top"
+                   Margin="59,5,0,0" FontSize="14"/>
+                <ComboBox x:Name="LanguageComboBox" Grid.Column="0" Grid.Row="3"  Grid.ColumnSpan="2"  HorizontalAlignment="Center" VerticalAlignment="Top" Width="300" Height="25"
+                      BorderBrush="DarkGray" BorderThickness="1.5" Margin="0,38,0,0" >
+                    <ComboBoxItem Content="Serbian"/>
+                </ComboBox>
+
+                <!-- Max. num. of guests: -->
+                <Label Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Content="Max. num. of guests:" HorizontalAlignment="Left" VerticalAlignment="Top"
+                   Margin="59,10,0,0" FontSize="14">
+                </Label>
+                <xctk:IntegerUpDown x:Name="MaxNumOfGuestsPicker" Grid.Column="0" Grid.Row="4" TextAlignment="Left"  Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Top"
+                              BorderBrush="DarkGray" BorderThickness="1.5" Minimum="1" Margin="0,35,0,0" Width="300" Height="25">
+                </xctk:IntegerUpDown>
+
+                <!-- Duration: -->
+                <Label Grid.Column="0" Grid.Row="5"  Content="Duration (in hours):" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Top"
+                   Margin="59,10,0,0" FontSize="14">
+                </Label>
+                <xctk:IntegerUpDown x:Name="DurationPicker"  Grid.Column="0" Grid.Row="5"  TextAlignment="Left" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Top"
+                              BorderBrush="DarkGray" BorderThickness="1.5" Minimum="1" Margin="0,35,0,0" Width="300" Height="25">
+                </xctk:IntegerUpDown>
+                <!-- Add checkpoints -->
+                <Button x:Name="AddCheckpointsButton"  Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Height="25"
+                    Cursor="Hand" Content="Add checkpoints" FontSize="14" Command="{Binding ShowAddCheckpointsPageCommand}" BorderBrush="DarkGray" BorderThickness="1.5">
+                </Button>
+                <!-- Add appointment -->
+                <Button x:Name="AddAppointmentsButton"  Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Height="25"
+                    Cursor="Hand" Content="Add appointments" FontSize="14" Command="{Binding ShowAddAppointmentsPageCommand}" BorderBrush="DarkGray" BorderThickness="1.5">
+                </Button>
+                <!-- Add images -->
+                <Button Grid.Column="0" Grid.Row="8" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Height="25"
+                    Cursor="Hand" BorderBrush="DarkGray" BorderThickness="1.5" Content="Add images" FontSize="14" Command="{Binding ShowAddImagesCommand}">
+                </Button>
+                <!-- Preview images -->
+                <Button Grid.Column="0" Grid.Row="9" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Height="25"
+                    Cursor="Hand" BorderBrush="DarkGray" BorderThickness="1.5" Content="Preview images" FontSize="14" Command="{Binding ShowGalleryCommand}">
+                </Button>
+                <!-- Create -->
+                <Button x:Name="CreateTourButton"  Grid.Column="0" Grid.Row="10" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Height="25"
+                    Cursor="Hand" BorderBrush="DarkGray" BorderThickness="1.5" Content="Create" FontSize="14" Command="{Binding CreateTourClickCommand}">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="IsEnabled" Value="False"></Setter>
+                            <Style.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding ElementName= NameTextBox, Path=(Validation.HasError)}" Value="False"></Condition>
+                                        <Condition Binding="{Binding ElementName= CountryComboBox, Path=(Validation.HasError)}" Value="False"></Condition>
+                                        <Condition Binding="{Binding ElementName= CityComboBox, Path=(Validation.HasError)}" Value="False"></Condition>
+                                        <Condition Binding="{Binding ElementName= DescriptionTextBox, Path=(Validation.HasError)}" Value="False"></Condition>
+                                        <Condition Binding="{Binding ElementName= LanguageComboBox, Path=(Validation.HasError)}" Value="False"></Condition>
+                                        <Condition Binding="{Binding ElementName= MaxNumOfGuestsPicker, Path=(Validation.HasError)}" Value="False"></Condition>
+                                        <Condition Binding="{Binding ElementName= DurationPicker, Path=(Validation.HasError)}" Value="False"></Condition>
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="IsEnabled" Value="True"></Setter>
+                                </MultiDataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</Page>

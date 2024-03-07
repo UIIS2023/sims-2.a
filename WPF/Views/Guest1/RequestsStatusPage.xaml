@@ -1,0 +1,54 @@
+﻿<Page x:Class="SOSTeam.TravelAgency.WPF.Views.Guest1.RequestsStatusPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SOSTeam.TravelAgency.WPF.Views.Guest1"
+      mc:Ignorable="d" 
+      Background="LightGoldenrodYellow"
+      d:DesignHeight="752.04" d:DesignWidth="1024"
+      Title="RequestsStatusPage">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/WPF/Views/Guest1/Styles/MenuButtonStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid>
+        <Frame x:Name="StatusFrame" NavigationUIVisibility ="Hidden" />
+        <Image Source="/Resources/Icons/Guest1/user_siluet.png" 
+                   Margin="0,3,818,567"/>
+        <TextBlock Foreground="Black" x:Name="UsersName" FontSize="20" FontWeight="Black" Text="{Binding UsernameTextBlock}"
+                   Margin="0,160,820,542" TextAlignment="Center"></TextBlock>
+        <TextBlock x:Name="WindowName" TextAlignment="Center" Text="{Binding WindowNameTextBlock}"
+                   FontSize="80" FontWeight="Bold" FontStyle="Italic" Margin="205,20,0,590" Width="809"/>
+        <UniformGrid Rows="5" Margin="0,255,820,121" >
+            <Button  Command="{Binding NavigationButtonCommand}" CommandParameter="Profille" Style="{StaticResource MenuButtonStyle}" 
+                     VerticalAlignment="Stretch">
+                <StackPanel Width="202" Height="73">
+                    <Label Margin="75,21,60,22.5" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Profil"/>
+                    <Image Margin="35,-62,90,5" Source="/Resources/Icons/Guest1/user_ikonica2.png" Height="35" Width="35"
+                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+            <Button  Command="{Binding NavigationButtonCommand}" CommandParameter="Search" Style="{StaticResource MenuButtonStyle}"
+                     IsEnabled="False"
+                     Content=""  VerticalAlignment="Stretch" />
+            <Button  Command="{Binding NavigationButtonCommand}" CommandParameter="Bid" Style="{StaticResource MenuButtonStyle}"
+                     IsEnabled="False"
+                     Content=""  VerticalAlignment="Stretch" />
+            <Button  Command="{Binding NavigationButtonCommand}" CommandParameter="Whatever" Style="{StaticResource MenuButtonStyle}"
+                     IsEnabled="False"
+                     Content=""  VerticalAlignment="Stretch" />
+            <Button  Command="{Binding NavigationButtonCommand}" CommandParameter="LogOut" Style="{StaticResource MenuButtonStyle}"  
+                     VerticalAlignment="Stretch">
+                <StackPanel Width="202" Height="73">
+                    <Label Margin="78.5,21,59.5,22.5" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Odjavi se"/>
+                    <Image Margin="16.5,-62,90,5" Source="/Resources/Icons/Guest1/log_out.png" Height="29" Width="32"
+                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+        </UniformGrid>
+    </Grid>
+</Page>

@@ -1,0 +1,38 @@
+﻿<Page x:Class="SOSTeam.TravelAgency.WPF.Views.Guest1.EnterGuestNumberPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SOSTeam.TravelAgency.WPF.Views.Guest1"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="820"
+      Background="LightGoldenrodYellow"
+      Title="EnterGuestNumberPage">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/WPF/Views/Guest1/Styles/ButtonStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid Margin="205,162,0,0">
+        <Label HorizontalContentAlignment="Center" FontSize="25" FontWeight="Black" Margin="0,32,0,350" 
+               Width="615">Unesite broj gostiju :</Label>
+        <TextBox x:Name="GuestNumber" Height="30" Width="108" Margin="162,120,162,162" BorderBrush="Black" BorderThickness="2"
+                 Text="{Binding EnteredGuestNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBlock Text="{Binding MaximalGuestsNumber}" FontSize="12" Foreground="DarkGoldenrod"
+                   FontStyle="Italic" FontWeight="DemiBold" Margin="323,280,194,136"/>
+        <Button Content="Završi" Style="{StaticResource ButtonStyle}" Margin="135,295,133,14"
+                Command="{Binding finishReserveCommand}"/>
+        <Button x:Name="BackToDaysPicking" Margin="-190,338,505,57" Content="Nazad"
+                Style="{StaticResource ButtonStyle}" Command="{Binding GoBackCommand}"/>
+        <Label Margin="57,476,348,-70" FontStyle="Italic" FontSize="15"
+               Foreground="DarkGoldenrod" FontWeight="Bold">Biranje opsega datuma -></Label>
+        <Label Margin="247,476,172,-70" FontStyle="Italic" FontSize="15"
+               Foreground="DarkGoldenrod" FontWeight="Bold">Prikaz zazetosti dana -></Label>
+        <Label Margin="424,476,48,-70" FontStyle="Italic" FontSize="15"
+               Foreground="DarkGoldenrod" FontWeight="Bold">Biranje termina -></Label>
+        <Label Margin="560,476,-148,-70" FontStyle="Italic" FontSize="15"
+               Foreground="DarkGoldenrod" FontWeight="Bold">Unošenje broja gostiju</Label>
+    </Grid>
+</Page>

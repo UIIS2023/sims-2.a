@@ -1,0 +1,169 @@
+﻿<Page x:Class="SOSTeam.TravelAgency.WPF.Views.Owner.AddAccommodationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SOSTeam.TravelAgency.WPF.Views.Owner" 
+      xmlns:tk="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit.NET5"
+      xmlns:models="clr-namespace:SOSTeam.TravelAgency.Domain.Models"
+      xmlns:converter="clr-namespace:SOSTeam.TravelAgency.WPF.ViewModels.Owner"
+      mc:Ignorable="d" 
+      d:DesignHeight="662" d:DesignWidth="804"
+      Title="AddAccommodationPage">
+    <Page.Resources>
+        
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="FontFamily" Value="{StaticResource OwnerFont}" />
+            <Setter Property="Margin" Value="10" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontFamily" Value="{StaticResource OwnerFont}" />
+            <Setter Property="Width" Value="180" />
+            <Setter Property="Height" Value="30" />
+        </Style>
+        <Style TargetType="tk:IntegerUpDown">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="Width" Value="180" />
+            <Setter Property="Height" Value="30" />
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="Width" Value="180" />
+            <Setter Property="Height" Value="32" />
+        </Style>
+
+        <converter:EnumToBoolConverter x:Key="EnumToBoolConverter" />
+    </Page.Resources>
+
+    <Grid Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Margin="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="500*"/>
+                <ColumnDefinition Width="333*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel >
+                <Label Content="Dodajte novi smeštaj " FontSize="25" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,10,10,50" />
+
+                <WrapPanel>
+                    <Label  Content ="Ime"></Label>
+                    <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Path=AName, UpdateSourceTrigger=PropertyChanged}" Width="255" ></TextBox>
+                </WrapPanel>
+                <WrapPanel  >
+                    <Label  Content ="Tip"></Label>
+                    <RadioButton IsChecked="{Binding SelectedType,Mode=TwoWay, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static models:Accommodation+AccommodationType.APARTMENT}}" VerticalContentAlignment="Center" VerticalAlignment="Center" FontSize="20" Margin="2,10" GroupName="type"  Content="Apartment" FontFamily="{StaticResource OwnerFont}"></RadioButton>
+                    <RadioButton IsChecked="{Binding SelectedType,Mode=TwoWay, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static models:Accommodation+AccommodationType.HOUSE}}" VerticalContentAlignment="Center" VerticalAlignment="Center" FontSize="20" Margin="2,10" GroupName="type"  Content="House" FontFamily="{StaticResource OwnerFont}"></RadioButton>
+                    <RadioButton IsChecked="{Binding SelectedType,Mode=TwoWay, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static models:Accommodation+AccommodationType.HUT}}" VerticalContentAlignment="Center" VerticalAlignment="Center" FontSize="20" Margin="2,10" GroupName="type"  Content="Hut" FontFamily="{StaticResource OwnerFont}" ></RadioButton>
+                </WrapPanel>
+                <WrapPanel >
+
+                    <Label   Content ="Lokacija"></Label>
+                    <ComboBox x:Name="countryComboBox"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0" Width="140"
+                         ItemsSource="{Binding Path=Countries}"
+                         SelectedItem="{Binding Path=Country}"
+                              IsEnabled="{Binding CountryBoxEnabled}"/>
+                    <ComboBox x:Name="cityComboBox"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0"
+                         ItemsSource="{Binding Path=Cities}"
+                         SelectedItem="{Binding Path=City}" Width="150"/>
+                </WrapPanel>
+                <WrapPanel>
+                    <Label  Content ="Maksimalan broj gostiju" Width="300"></Label>
+                    <tk:IntegerUpDown Height="30" Width="100" HorizontalContentAlignment="Left" Minimum="1" DefaultValue="1" AllowSpin="True" Value="{Binding MaxGuests}"></tk:IntegerUpDown>
+                </WrapPanel>
+                <WrapPanel>
+                    <Label   Content ="Minimalan broj dana" Width="300"></Label>
+                    <tk:IntegerUpDown Height="30" Width="100" HorizontalContentAlignment="Left" Minimum="1" DefaultValue="1" AllowSpin="True" Value="{Binding MinDaysStay}"></tk:IntegerUpDown>
+                </WrapPanel>
+                <WrapPanel>
+                    <Label   Content ="Minimalano dana za otkazivanje" Width="300"></Label>
+                    <tk:IntegerUpDown Height="30" Width="100" HorizontalContentAlignment="Left" Minimum="1" DefaultValue="1" AllowSpin="True" Value="{Binding MinDaysForCancelation}"></tk:IntegerUpDown>
+                </WrapPanel>
+
+
+
+
+
+
+
+            </StackPanel>
+            <StackPanel Grid.Column="1">
+                <Grid VerticalAlignment="Center" Margin="0,130,0,100" Height="300">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Border BorderThickness="1" BorderBrush="{StaticResource OwnerBorderColor}" Background="{StaticResource Owner30ColorBrush}" />
+                        <WrapPanel HorizontalAlignment="Left">
+                            <Label Content="Slike:"/>
+                        </WrapPanel>
+                        <WrapPanel HorizontalAlignment="Right" VerticalAlignment="Center">
+                            <Button Margin="10,0,10,0" Command="{Binding AddPicture}" VerticalAlignment="Bottom"  Style="{StaticResource OwnerButtons}" RenderTransformOrigin="0.5,0.5">
+                                <Button.RenderTransform>
+                                    <ScaleTransform ScaleX="1" ScaleY="1" />
+                                </Button.RenderTransform>
+                                <Image Source="/Resources/Icons/plusicon.png" Width="40" Height="40" ></Image>
+                            </Button>
+                            <Button Margin="10,0,10,0" Command="{Binding RemovePicture}"  Style="{StaticResource OwnerButtons}" RenderTransformOrigin="0.5,0.5">
+                                <Button.RenderTransform>
+                                    <ScaleTransform ScaleX="1" ScaleY="1" />
+                                </Button.RenderTransform>
+                                <Image Source="/Resources/Icons/Trash.png" Width="40" Height="40" ></Image>
+                            </Button>
+                        </WrapPanel>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Border BorderThickness="1" BorderBrush="{StaticResource OwnerBorderColor}"/>
+                        <ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding SelectedImages}" SelectedItem="{Binding SelectedImage}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                                        <Image Source="{Binding Path}" Width="200" Height="150" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="UniformToFill"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <Border BorderThickness="1" BorderBrush="{StaticResource OwnerBorderColor}"  Background="{StaticResource Owner30ColorBrush}"/>
+                        <WrapPanel HorizontalAlignment="Right" VerticalAlignment="Center">
+                            <Button Margin="10,0,10,0" Command="{Binding SetCover}" Content="Obeleži kao naslovnu" FontSize="20" Style="{StaticResource OwnerButtons}" RenderTransformOrigin="0.5,0.5">
+                                <Button.RenderTransform>
+                                    <ScaleTransform ScaleX="1" ScaleY="1" />
+                                </Button.RenderTransform>
+
+                            </Button>
+
+                        </WrapPanel>
+                    </Grid>
+                    
+                </Grid>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Border BorderBrush="{StaticResource OwnerBorderColor}" BorderThickness="1"/>
+            <WrapPanel HorizontalAlignment="Right" VerticalAlignment="Center">
+                <Button Content="Dodaj smeštaj" FontSize="25" Margin="20" Command="{Binding AddAccommodation}" Style="{StaticResource OwnerButtons}" RenderTransformOrigin="0.5,0.5">
+                    <Button.RenderTransform>
+                        <ScaleTransform ScaleX="1" ScaleY="1" />
+                    </Button.RenderTransform>
+                </Button>
+                <Button Content="Odustani" FontSize="25" Margin="20" Command="{Binding Cancel}" Style="{StaticResource OwnerButtons}" RenderTransformOrigin="0.5,0.5">
+                    <Button.RenderTransform>
+                        <ScaleTransform ScaleX="1" ScaleY="1" />
+                    </Button.RenderTransform>
+
+                </Button>
+            </WrapPanel>
+        </Grid>
+
+    </Grid>
+</Page>

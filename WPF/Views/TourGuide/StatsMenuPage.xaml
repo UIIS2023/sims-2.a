@@ -1,0 +1,28 @@
+﻿<Page x:Class="SOSTeam.TravelAgency.WPF.Views.TourGuide.StatsMenuPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SOSTeam.TravelAgency.WPF.Views.TourGuide"
+      mc:Ignorable="d" 
+      d:DesignHeight="636" d:DesignWidth="430"
+      Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"
+      Title="TourStatsPage">
+
+    <Grid>
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10 30 10 0" Height="200" Width="380" Background="AliceBlue">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Button Grid.Row="0" Background="Transparent" Content="Overview" HorizontalContentAlignment="Left" FontSize="25"
+                    Command="{Binding ShowToursOverviewStatsCommand}"></Button>
+            <Button Grid.Row="1" Background="Transparent" Content="Stat by tour" HorizontalContentAlignment="Left" FontSize="25"
+                    Command="{Binding ShowStatByToursCommand}"></Button>
+            <Button Grid.Row="2" Background="Transparent" Content="Request stat" HorizontalContentAlignment="Left" FontSize="25"
+                    Command="{Binding ShowTourRequestStatsCommand}">
+            </Button>
+        </Grid>
+    </Grid>
+</Page>

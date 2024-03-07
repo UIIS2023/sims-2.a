@@ -1,0 +1,24 @@
+﻿<Window x:Class="SOSTeam.TravelAgency.WPF.Views.Guest1.Guest1MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SOSTeam.TravelAgency.WPF.Views.Guest1"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Background="LightGoldenrodYellow"
+        Title="MainWindow" Height="768" Width="1024">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/WPF/Views/Guest1/Styles/ButtonStyle.xaml" />
+                <ResourceDictionary Source="/WPF/Views/Guest1/Styles/DataGridStyle.xaml" />
+                <ResourceDictionary Source="/WPF/Views/Guest1/Styles/ImageButtonStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Frame x:Name="MainFrame" NavigationUIVisibility ="Hidden" />
+    </Grid>
+</Window>

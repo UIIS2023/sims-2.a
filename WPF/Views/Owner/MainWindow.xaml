@@ -1,0 +1,421 @@
+﻿<Window x:Class="SOSTeam.TravelAgency.WPF.Views.Owner.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SOSTeam.TravelAgency.WPF.Views.Owner"
+        mc:Ignorable="d"
+        Title="Travel Agency" Height="768" Width="1024"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Window.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="{StaticResource OwnerFont}" />
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="{StaticResource OwnerFont}" />
+        </Style>
+        <Style TargetType="Grid">
+            <Setter Property="Background" Value="Transparent" />
+        </Style>
+        <Style TargetType="Border">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="BorderBrush" Value="{StaticResource OwnerBorderColor}" />
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="BorderBrush" Value="{StaticResource OwnerBorderColor}" />
+            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="FontFamily" Value="{StaticResource OwnerFont}"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid Background="{TemplateBinding Background}">
+                            <ContentPresenter x:Name="MyContentPresenter" 
+                                      Content="{TemplateBinding Content}"
+                                      HorizontalAlignment="Center" 
+                                      VerticalAlignment="Center" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Background" Value="LightBlue"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" To="1.05" Duration="0:0:0.2" />
+                                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" To="1.1" Duration="0:0:0.2" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" To="1" Duration="0:0:0.2" />
+                                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" To="1" Duration="0:0:0.2" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="Button" x:Key="DropdownButton">
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="Background" Value="#63aaed" />
+            <Setter Property="BorderBrush" Value="Black" />
+            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="FontFamily" Value="{StaticResource OwnerFont}"/>
+            <Setter Property="Cursor" Value="Hand" />
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid Background="{TemplateBinding Background}">
+                            <ContentPresenter x:Name="MyContentPresenter" 
+                                      Content="{TemplateBinding Content}"
+                                      HorizontalAlignment="Center" 
+                                      VerticalAlignment="Center" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Background" Value="LightBlue"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" To="1.05" Duration="0:0:0.2" />
+                                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" To="1.1" Duration="0:0:0.2" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" To="1" Duration="0:0:0.2" />
+                                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" To="1" Duration="0:0:0.2" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="90"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Rectangle Width="Auto" Height="Auto" Grid.RowSpan="2">
+            <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="#ebf1f5" Offset="0"/>
+                    <GradientStop Color="#b8dcf5" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        
+
+        <Grid Grid.Row="0" DockPanel.Dock="Top" VerticalAlignment="Top">
+
+            <Border></Border>
+             
+            <WrapPanel  >
+                <Label Margin="0,8" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Content="Travel Agency" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="48" FontWeight="Normal" FontFamily="Segoe UI Black"/>
+            </WrapPanel>
+            <WrapPanel HorizontalAlignment="Right"   >
+                <Button Margin="0,15" Height="42" Background="Transparent" Command="{Binding ToggleShowNotifications}" IsEnabled="{Binding IsDropdownClosed}" RenderTransformOrigin="0.5,0.5">
+                    <Button.RenderTransform>
+                        <ScaleTransform ScaleX="1" ScaleY="1" />
+                    </Button.RenderTransform>
+                    <Image x:Name="MyButton" Source="/Resources/Icons/notif_bell.png" Width="40" Height="40"></Image>
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Cursor" Value="Hand" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsUnread}" Value="True">
+                                    <Setter Property="BorderBrush" Value="Red"/>
+                                    <Setter Property="BorderThickness" Value="4"/>
+                                </DataTrigger>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Background" Value="LightBlue"/>
+                                </Trigger>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" To="1.2" Duration="0:0:0.2" />
+                                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" To="1.2" Duration="0:0:0.2" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" To="1" Duration="0:0:0.2" />
+                                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" To="1" Duration="0:0:0.2" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.ExitActions>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+
+                <Popup x:Name="MyPopup" StaysOpen="False" AllowsTransparency="True"
+                   PlacementTarget="{Binding ElementName=MyButton}"
+                   Placement="Bottom"
+                       VerticalOffset="-15"
+                       HorizontalOffset="105"
+                       IsOpen="{Binding IsDropdownOpen}">
+                            <Grid Height="400" Width="300" Background="Transparent">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="20" />
+                                </Grid.RowDefinitions>
+                                
+                                <Grid x:Name="TriangleGrid"
+                                      Grid.Row="0"
+                                      Background="Transparent"
+                                      Width="30"
+                                      Height="40"
+                                      Margin="0, -10, 0, 0"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Top">
+                                    <Path Fill="#dceefa" Stretch="Fill" StrokeThickness="2" Stroke="Black" >
+                                        <Path.Data>
+                                            <PathGeometry>
+                                                <PathFigure StartPoint="0,30">
+                                                    <LineSegment Point="30,0"  />
+                                                    <LineSegment Point="60,30" />
+                                                    <LineSegment Point="0,30" />
+                                                </PathFigure>
+                                            </PathGeometry>
+                                        </Path.Data>
+                                    </Path>
+                                </Grid>
+                                <Grid Grid.Row="1" Background="Transparent">
+                            <Border BorderThickness="2" BorderBrush="{StaticResource OwnerBorderColor}" CornerRadius="20" Background="#dceefa"></Border>
+
+                            <StackPanel Margin="2,20" Width="300">
+                                <Grid HorizontalAlignment="Center">
+                                    
+
+                                    <ScrollViewer Width="295" Height="280" Background="Transparent" >
+                                        <ListView Grid.Row="1" ItemsSource="{Binding Notifications}" Background="Transparent" SelectedItem="{Binding SelectedNotification}" >
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="MouseDoubleClick">
+                                                    <i:InvokeCommandAction Command="{Binding NotificationDoubleClick}" />
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
+                                            <ListView.ItemContainerStyle>
+                                                <Style TargetType="{x:Type ListViewItem}">
+                                                    <Setter Property="Cursor" Value="Hand" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Read}" Value="False">
+                                                            <Setter Property="Background" Value="#93caed"/>
+                                                            <Setter Property="BorderThickness" Value="4"/>
+                                                            <Setter Property="BorderBrush" Value="#1b1791"/>
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding Read}" Value="True">
+                                                            <Setter Property="Background" Value="#d2e2ff"/>
+                                                            <Setter Property="BorderThickness" Value="2"/>
+                                                            <Setter Property="BorderBrush" Value="#5695e8"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+
+                                                </Style>
+                                            </ListView.ItemContainerStyle>
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Horizontal" >
+                                                        <TextBlock Margin="10" Text="{Binding Text}" TextWrapping="Wrap" MaxWidth="230"/>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                        </ListView>
+                                    </ScrollViewer>
+
+
+                                </Grid>
+                                <Grid >
+                                    <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Right">
+                                        <Button Content="Označi kao pročitano" Height="28" FontSize="18" Margin="2,2" Command="{Binding MarkAsReadNotification}" Style="{StaticResource DropdownButton}" RenderTransformOrigin="0.5,0.5">
+                                            <Button.RenderTransform>
+                                                <ScaleTransform ScaleX="1" ScaleY="1" />
+                                            </Button.RenderTransform>
+                                        </Button>
+                                        <Button Content="Izbriši" Height="28" FontSize="18" Margin="4,2,25,2" Command="{Binding DeleteNotification}" Style="{StaticResource DropdownButton}" RenderTransformOrigin="0.5,0.5">
+                                            <Button.RenderTransform>
+                                                <ScaleTransform ScaleX="1" ScaleY="1" />
+                                            </Button.RenderTransform>
+                                        </Button>
+                                    </WrapPanel>
+                                    
+                                </Grid>
+                            </StackPanel>
+                                    
+                        </Grid>
+                                
+                            </Grid>
+                        
+                </Popup>
+
+                <Button Command="{Binding NavigationButtonCommand}" CommandParameter="User" Margin="2" Background="Transparent" BorderThickness="0" RenderTransformOrigin="0.5,0.5">
+                    <Button.RenderTransform>
+                        <ScaleTransform ScaleX="1" ScaleY="1" />
+                    </Button.RenderTransform>
+                    <WrapPanel >
+                        <Image  Source="/Resources/Icons/user_ikonica2.png" Width="45" Height="45" Margin="15,15,0,15"></Image>
+                        <Label Content="{Binding Path=Username, UpdateSourceTrigger=PropertyChanged}" Margin="15" Height="80" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="24" VerticalContentAlignment="Center"></Label>
+                    </WrapPanel>
+                </Button>
+                </WrapPanel>
+            
+
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="220"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" BorderThickness="1" BorderBrush="{StaticResource OwnerBorderColor}" ></Border>
+            <Border Grid.Column="1" BorderThickness="1" BorderBrush="{StaticResource OwnerBorderColor}" ></Border>
+            
+
+
+            <Grid Grid.Column="0">
+                
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="200"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Border Grid.Row="0"></Border>
+                
+                <Grid Grid.Row="0">
+                    <Button Command="{Binding NavigationButtonCommand}" Margin="2" CommandParameter="User" Background="Transparent" BorderThickness="0" RenderTransformOrigin="0.5,0.5">
+                        <Button.RenderTransform>
+                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                        </Button.RenderTransform>
+                        <StackPanel >
+                            <Image Source="/Resources/Icons/user_ikonica2.png" Width="130" Height="130" Margin="0,15,0,0"></Image>
+                            <Label Content="{Binding Path=Username, UpdateSourceTrigger=PropertyChanged}" Margin="3" Height="Auto" FontSize="24" HorizontalAlignment="Center" />
+                        </StackPanel>
+                    </Button>
+                    
+                </Grid>
+
+                <Grid Grid.Row="1">
+                    <UniformGrid Rows="7" >
+                        <Border>
+                            
+                            <Button Command="{Binding NavigationButtonCommand}" CommandParameter="Home" VerticalAlignment="Stretch"  RenderTransformOrigin="0.5,0.5">
+                                <Button.RenderTransform>
+                                    <ScaleTransform ScaleX="1" ScaleY="1" />
+                                </Button.RenderTransform>
+                                <WrapPanel HorizontalAlignment="Left" Width="220">
+                                    <Image Source="/Resources/Icons/home_owner.png"  Margin="0,8,5,8"></Image>
+                                    <Label Content="Početna stranica" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="20"></Label>
+                                </WrapPanel>
+                            </Button>
+                        </Border>
+
+                        <Border>
+                            <Button BorderBrush="{StaticResource OwnerBorderColor}" Command="{Binding NavigationButtonCommand}" CommandParameter="Accommodation"   VerticalAlignment="Stretch"  RenderTransformOrigin="0.5,0.5">
+                                <Button.RenderTransform>
+                                    <ScaleTransform ScaleX="1" ScaleY="1" />
+                                </Button.RenderTransform>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="220">
+                                    <Image Source="/Resources/Icons/building.png"  Margin="0,8,5,8"></Image>
+                                    <Label Content="Smeštaji" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" Width="180"></Label>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border>
+                            <Button BorderBrush="{StaticResource OwnerBorderColor}" Command="{Binding NavigationButtonCommand}" CommandParameter="Review"   VerticalAlignment="Stretch"  RenderTransformOrigin="0.5,0.5">
+                                <Button.RenderTransform>
+                                    <ScaleTransform ScaleX="1" ScaleY="1" />
+                                </Button.RenderTransform>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="220">
+                                    <Image Source="/Resources/Icons/rewies.png"  Margin="0,8,5,8"></Image>
+                                    <Label Content="Recenzije" VerticalAlignment="Center" FontSize="20"></Label>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border>
+                            <Button BorderBrush="{StaticResource OwnerBorderColor}" Command="{Binding NavigationButtonCommand}" CommandParameter="Renovation"   VerticalAlignment="Stretch" HorizontalContentAlignment="Left"  RenderTransformOrigin="0.5,0.5">
+                                <Button.RenderTransform>
+                                    <ScaleTransform ScaleX="1" ScaleY="1" />
+                                </Button.RenderTransform>
+                                <WrapPanel HorizontalAlignment="Left" Width="220">
+                                    <Image Source="/Resources/Icons/renovations.png"  Margin="0,8,5,8"></Image>
+                                    <Label Content="Renoviranja" VerticalAlignment="Center" FontSize="20"></Label>
+                                </WrapPanel>
+                            </Button>
+                        </Border>
+                        <Border>
+                            <Button BorderBrush="{StaticResource OwnerBorderColor}" Command="{Binding NavigationButtonCommand}" CommandParameter="Request"   VerticalAlignment="Stretch"  RenderTransformOrigin="0.5,0.5">
+                                <Button.RenderTransform>
+                                    <ScaleTransform ScaleX="1" ScaleY="1" />
+                                </Button.RenderTransform>
+                                <WrapPanel HorizontalAlignment="Left" Width="220">
+                                    <Image Source="/Resources/Icons/requests.png"  Margin="0,8,5,8"></Image>
+                                    <Label Content="Zahtevi" VerticalAlignment="Center" FontSize="20"></Label>
+                                </WrapPanel>
+                            </Button>
+                        </Border>
+                        <Border>
+                            <Button BorderBrush="{StaticResource OwnerBorderColor}" Command="{Binding NavigationButtonCommand}" CommandParameter="Suggestion"   VerticalAlignment="Stretch"  RenderTransformOrigin="0.5,0.5">
+                                <Button.RenderTransform>
+                                    <ScaleTransform ScaleX="1" ScaleY="1" />
+                                </Button.RenderTransform>
+                                <WrapPanel HorizontalAlignment="Left" Width="220">
+                                    <Image Source="/Resources/Icons/suggestions.png"  Margin="0,8,5,8"></Image>
+                                    <Label Content="Preporuke" VerticalAlignment="Center" FontSize="20"></Label>
+                                </WrapPanel>
+                            </Button>
+                        </Border>
+                        <Border>
+                            <Button BorderBrush="{StaticResource OwnerBorderColor}" Command="{Binding NavigationButtonCommand}" CommandParameter="Forum"   VerticalAlignment="Stretch" HorizontalContentAlignment="Left"  RenderTransformOrigin="0.5,0.5">
+                                <Button.RenderTransform>
+                                    <ScaleTransform ScaleX="1" ScaleY="1" />
+                                </Button.RenderTransform>
+                                <WrapPanel HorizontalAlignment="Left" Width="220">
+                                    <Image Source="/Resources/Icons/forums.png"  Margin="0,8,5,8"></Image>
+                                    <Label Content="Forumi" VerticalAlignment="Center" FontSize="20"></Label>
+                                </WrapPanel>
+                            </Button>
+                        </Border>
+                    </UniformGrid>
+                </Grid>
+
+
+            </Grid>
+
+            <Grid Grid.Column="1">
+                <Frame x:Name="MainFrame" NavigationUIVisibility ="Hidden" />
+            </Grid>
+            
+            
+
+        </Grid>
+        
+
+
+
+
+    </Grid>
+</Window>

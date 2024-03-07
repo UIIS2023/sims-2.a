@@ -1,0 +1,90 @@
+﻿<Page x:Class="SOSTeam.TravelAgency.WPF.Views.Guest2.RequestsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SOSTeam.TravelAgency.WPF.Views.Guest2"
+      mc:Ignorable="d" 
+      Title="RequestsPage" Height="800" Width="1280"
+      Background="AliceBlue">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/MainWindowStyles.xaml" />
+                <ResourceDictionary Source="/Styles/ButtonStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                <!--Navigation menu-->
+                <ColumnDefinition Width="286"/>
+                <!--Content section-->
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Border CornerRadius="10,0,0,10"
+                    Grid.Column="0" Margin="0,0,1,0">
+
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0.7">
+                        <GradientStop Color="{StaticResource primaryBackColor1}" Offset="0"></GradientStop>
+                        <GradientStop Color="{StaticResource primaryBackColor2}" Offset="1"></GradientStop>
+                    </LinearGradientBrush>
+                </Border.Background>
+
+                <StackPanel>
+                    <StackPanel Orientation="Vertical"
+                                Height="155"
+                                Margin="15,25,0,40" Width="220">
+                        <Image Source="/Resources/Icons/user_ikonica.png" Height="126" Width="229"/>
+                        <Label Content="{Binding LoggedInUser.Username}" HorizontalContentAlignment="Center" FontSize="18" FontFamily="Microsoft Sans Serif" Height="32" Width="154"/>
+                    </StackPanel>
+
+                    <Button Style="{StaticResource MenuButtons}" Command="{Binding NavigationCommand}" CommandParameter="OrdinaryRequests" BorderThickness="1,1,2,2">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Resources/Icons/request.png" Height="40" Width="38"/>
+                            <TextBlock Text="  Zahtevi za obicne ture" Height="24" Width="186"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Style="{StaticResource MenuButtons}" Command="{Binding NavigationCommand}" CommandParameter="ComplexRequests" BorderThickness="1,1,2,2">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Resources/Icons/request.png" Height="40" Width="38"/>
+                            <TextBlock Text=" Zahtevi za slozene ture" Height="24" Width="195"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Style="{StaticResource MenuButtons}" Command="{Binding HelpCommand}" BorderThickness="1,1,2,2">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Resources/Icons/help--v1.png" Height="40" Width="38"/>
+                            <TextBlock Text="  Tutorijal (Ctrl + h)" Height="24" Width="189"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Style="{StaticResource MenuButtons}" Command="{Binding BackCommand}" BorderThickness="1,1,2,2">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Resources/Icons/back_button.png" Height="40" Width="38"/>
+                            <TextBlock Text="  Nazad (Ctrl + b)" Height="24" Width="189"/>
+                        </StackPanel>
+                    </Button>
+
+                </StackPanel>
+
+            </Border>
+
+            <Border CornerRadius="0,10,10,0"
+                    Grid.Column="1" Margin="10">
+                
+            </Border>
+
+            <Grid Grid.Column="1" Margin="10,10,10,10">
+                <Frame x:Name="MainFrame" NavigationUIVisibility ="Hidden" />
+            </Grid>
+        </Grid>
+        <Frame x:Name="HelpFrame" NavigationUIVisibility ="Hidden" />
+    </Grid>
+</Page>

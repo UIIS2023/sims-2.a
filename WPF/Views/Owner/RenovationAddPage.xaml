@@ -1,0 +1,155 @@
+﻿<Page x:Class="SOSTeam.TravelAgency.WPF.Views.Owner.RenovationAddPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:hack="clr-namespace:SOSTeam.TravelAgency.WPF.Behaviors"
+      xmlns:tk="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit.NET5"
+      xmlns:local="clr-namespace:SOSTeam.TravelAgency.WPF.Views.Owner"
+      mc:Ignorable="d" 
+      d:DesignHeight="662" d:DesignWidth="804"
+      Title="RenovationPage">
+    <Page.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="{StaticResource OwnerFont}" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="Margin" Value="10" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontFamily" Value="{StaticResource OwnerFont}" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="Width" Value="180" />
+            <Setter Property="Height" Value="30" />
+        </Style>
+        <Style x:Key="CenterTextBlockStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="FontFamily" Value="{StaticResource OwnerFont}" />
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+       
+        <hack:CalendarAttachedProperties x:Key="CalendarAttachedProperties" />
+    </Page.Resources>
+
+    <Grid Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Margin="20" Visibility="{Binding ChooseDateVisibility}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="500*"/>
+                <ColumnDefinition Width="333*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel >
+                <Label Content="Dodajte novo renoviranje " FontSize="25" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,10,10,70" />
+
+                <WrapPanel Margin="0,25,0,10">
+                    <Label  Content ="Trajanje renoviranja:" Width="250"></Label>
+                    <tk:IntegerUpDown Height="30" Width="100" HorizontalContentAlignment="Left" FontSize="19" Minimum="1" DefaultValue="1" AllowSpin="True" Value="{Binding RenovationDuration}"></tk:IntegerUpDown>
+                </WrapPanel>
+                <WrapPanel Margin="0,25,0,10">
+
+                    <Label   Content ="Smeštaj:"></Label>
+                    <ComboBox x:Name="countryComboBox"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="30,0,0,0" Width="240" FontSize="18" HorizontalContentAlignment="Left"
+                         ItemsSource="{Binding Path=Accommodations}"
+                         DisplayMemberPath="Name"
+                         SelectedItem="{Binding Path=SelectedAccommodation}" />
+                </WrapPanel >
+                <StackPanel>
+                    
+                    <WrapPanel Margin="0,20,0,0">
+                        <Label   Content ="Izabran period pretrage:" ></Label>
+                    </WrapPanel>
+                    <WrapPanel Margin="30,0"   >
+                        <Label   Content ="{Binding Path=StartDateString}" Width="140" HorizontalContentAlignment="Center" Background="#dceefa"></Label>
+                        <Label   Content ="-" ></Label>
+                        <Label   Content ="{Binding Path=EndDateString}" Width="140"   HorizontalContentAlignment="Center" Background="#dceefa"></Label>
+                    </WrapPanel>
+                </StackPanel>
+
+
+
+
+
+
+
+            </StackPanel>
+            <StackPanel Grid.Column="1">
+                <Grid VerticalAlignment="Center" Margin="0,130,0,100" Height="300">
+                    <Border BorderThickness="1" BorderBrush="{StaticResource OwnerBorderColor}" Background="{StaticResource Owner30ColorBrush}"/>
+                    <StackPanel>
+                        <WrapPanel>
+                            <TextBlock Text="Izaberite datume za pretragu:" VerticalAlignment="Center" FontSize="18" Margin="5,0" FontFamily="{StaticResource OwnerFont}"/>
+                            <Button Height="25" Width="25" Command="{Binding ResetCalendar}" Margin="25,3,0,0" VerticalAlignment="Center" Style="{StaticResource OwnerButtons}" RenderTransformOrigin="0.5,0.5">
+                                <Button.RenderTransform>
+                                    <ScaleTransform ScaleX="1" ScaleY="1" />
+                                </Button.RenderTransform>
+                                <Image Source="/Resources/Icons/refresh.png" Width="20" Height="20" Stretch="UniformToFill" />
+                            </Button>
+                        </WrapPanel>
+                        <Viewbox Stretch="Fill" StretchDirection="Both" Margin="5,0,5,10">
+                            <Calendar SelectionMode="SingleDate" DisplayMode="Month" IsTodayHighlighted="False"
+                                      SelectedDate="{Binding SelectedDate}" DisplayDateStart="{Binding StartDate,Mode=TwoWay}" DisplayDateEnd="{Binding EndDate,Mode=TwoWay}"
+                                      IsHitTestVisible="{Binding IsCalendarEnabled}" Background="#dceefa" 
+                                      hack:CalendarAttachedProperties.RegisterBlackoutDates="{Binding BlackoutDates}">
+                            </Calendar>
+                        </Viewbox>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="0" Margin="20" Visibility="{Binding PickDateVisibility}">
+            <StackPanel >
+                <Label Content="Mogući termini: " FontSize="25" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,10,10,20" />
+                <DataGrid Width="720" Height="260" RowHeight="80" Background="#dceefa" RowBackground="#dceefa" AlternatingRowBackground="#d2e2ff" ItemsSource="{Binding PossibleDateRanges}" SelectedItem="{Binding Path=SelectedDateRange, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Početni datum" Binding="{Binding StartDateString}" Width="*" FontSize="18"
+                            ElementStyle="{StaticResource CenterTextBlockStyle}"/>
+                        <DataGridTextColumn Header="Krajnji datum" Binding="{Binding EndDateString}" Width="*" FontSize="18"
+                            ElementStyle="{StaticResource CenterTextBlockStyle}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Label Content="Opis (opciono):" FontSize="16" Margin="10,5,0,0" />
+                <Border BorderThickness="1" BorderBrush="{StaticResource OwnerBorderColor}" Background="#dceefa" Margin="15,0,10,10">
+
+                    <TextBox Text="{Binding Comment,Mode=TwoWay}" Height="95" Width="Auto" FontSize="16" TextWrapping="Wrap">
+
+                    </TextBox>
+                </Border>
+
+
+
+
+
+
+
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Border BorderBrush="{StaticResource OwnerBorderColor}" BorderThickness="1"/>
+            <WrapPanel HorizontalAlignment="Right" VerticalAlignment="Center">
+                <Button Content="Zakaži renoviranje" FontSize="25" Margin="20" Command="{Binding AddRenovation}" Visibility="{Binding PickDateVisibility}" Style="{StaticResource OwnerButtons}" RenderTransformOrigin="0.5,0.5">
+                    <Button.RenderTransform>
+                        <ScaleTransform ScaleX="1" ScaleY="1" />
+                    </Button.RenderTransform>
+
+                </Button>
+                <Button Content="Pretraži termine" FontSize="25" Margin="20" Command="{Binding SearchDates}" Visibility="{Binding ChooseDateVisibility}" Style="{StaticResource OwnerButtons}" RenderTransformOrigin="0.5,0.5">
+                    <Button.RenderTransform>
+                        <ScaleTransform ScaleX="1" ScaleY="1" />
+                    </Button.RenderTransform>
+
+                </Button>
+                <Button Content="Odustani" FontSize="25" Margin="20" Command="{Binding Cancel}" Style="{StaticResource OwnerButtons}" RenderTransformOrigin="0.5,0.5">
+                    <Button.RenderTransform>
+                        <ScaleTransform ScaleX="1" ScaleY="1" />
+                    </Button.RenderTransform>
+
+                </Button>
+            </WrapPanel>
+        </Grid>
+
+    </Grid>
+</Page>

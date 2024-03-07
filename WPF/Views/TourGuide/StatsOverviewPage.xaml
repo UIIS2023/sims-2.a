@@ -1,0 +1,117 @@
+﻿<Page x:Class="SOSTeam.TravelAgency.WPF.Views.TourGuide.StatsOverviewPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SOSTeam.TravelAgency.WPF.Views.TourGuide"
+      xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+      mc:Ignorable="d" 
+      d:DesignHeight="636" d:DesignWidth="430"
+      Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"
+      Title="StatsOverviewPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"></RowDefinition>
+            <RowDefinition Height="3*"></RowDefinition>
+            <RowDefinition Height="6*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" BorderBrush="DarkGray" BorderThickness="0 0 0 2"></Border>
+        <Border Grid.Row="1" BorderBrush="DarkGray" Margin="0,0,0,0" BorderThickness="0 0 0 2"></Border>
+        <Label Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Overview" FontSize="24" FontWeight="Bold" Foreground="Black"></Label>
+        <Grid Grid.Row="1">
+            <Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="-The highest attendance ever" FontSize="22"></Label>
+            <!-- Card -->
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="360" Height="100" Background="{Binding MostAttendedTourEver.Background}" Margin="0 20 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"></ColumnDefinition>
+                    <ColumnDefinition Width="190"></ColumnDefinition>
+                    <ColumnDefinition Width="70"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Border Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Grid.RowSpan="3" BorderBrush="DarkGray" BorderThickness="1"/>
+                <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Source="{Binding MostAttendedTourEver.CoverImagePath}"/>
+                <!-- Name -->
+                <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding MostAttendedTourEver.Name}" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="18" Padding="5 0 0 5" TextWrapping="Wrap"/>
+
+                <!-- Location -->
+                <WrapPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="2 0 0 0">
+                    <Image Source="/Resources/Icons/checkpoint_light.png" HorizontalAlignment="Left" VerticalAlignment="Center" Width="19"/>
+                    <TextBlock Text="{Binding MostAttendedTourEver.Location}" TextWrapping="Wrap" FontSize="14" Foreground="#FF999999" VerticalAlignment="Top" TextAlignment="Center"/>
+                </WrapPanel>
+
+                <!-- Date -->
+                <WrapPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="2 0 0 0">
+                    <Image Source="/Resources/Icons/calendar_blank_light.png" Width="19" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="1 0 0 3"/>
+                    <TextBlock Text="{Binding MostAttendedTourEver.Start, StringFormat='dd.MM.yyyy.'}" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                       FontSize="14" Foreground="#FF999999" Padding="3 0 0 3"/>
+                </WrapPanel>
+
+                <!-- Trophy -->
+                <Image Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Source="/Resources/Icons/trophy.png" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
+
+                <!-- Status -->
+                <TextBlock Grid.Column="2" Grid.Row="2" Text="{Binding MostAttendedTourEver.Status}"  HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 2" FontWeight="Bold"></TextBlock>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="2*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Content="-The highest attendance of the year" FontSize="22">
+            </Label>
+            <Label Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Year" Margin="10 0 0 0"
+                   FontSize="16">
+            </Label>
+            <ComboBox Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,50,0,0" Width="405" Height="25"
+                      ItemsSource="{Binding AvailableYears}" SelectedItem="{Binding SelectedYear}" BorderBrush="DarkGray" BorderThickness="1.5">
+                <b:Interaction.Triggers>
+                    <b:EventTrigger EventName="SelectionChanged">
+                        <b:InvokeCommandAction Command="{Binding YearSelectionChangedCommand}" />
+                    </b:EventTrigger>
+                </b:Interaction.Triggers>
+            </ComboBox>
+            <Grid Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Width="360" Height="100" Background="{Binding MostAttendedTourOfYear.Background}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"></ColumnDefinition>
+                    <ColumnDefinition Width="190"></ColumnDefinition>
+                    <ColumnDefinition Width="70"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Border Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Grid.RowSpan="3" BorderBrush="DarkGray" BorderThickness="1"/>
+                <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Source="{Binding MostAttendedTourOfYear.CoverImagePath}"/>
+                <!-- Name -->
+                <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding MostAttendedTourOfYear.Name}" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="18" Padding="5 0 0 5" TextWrapping="Wrap"/>
+
+                <!-- Location -->
+                <WrapPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="2 0 0 0">
+                    <Image Source="/Resources/Icons/checkpoint_light.png" HorizontalAlignment="Left" VerticalAlignment="Center" Width="19"/>
+                    <TextBlock Text="{Binding MostAttendedTourOfYear.Location}" TextWrapping="Wrap" FontSize="14" Foreground="#FF999999" VerticalAlignment="Top" TextAlignment="Center"/>
+                </WrapPanel>
+
+                <!-- Date -->
+                <WrapPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="2 0 0 0">
+                    <Image Source="/Resources/Icons/calendar_blank_light.png" Width="19" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="1 0 0 3"/>
+                    <TextBlock Text="{Binding MostAttendedTourOfYear.Start, StringFormat='dd.MM.yyyy.'}" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                       FontSize="14" Foreground="#FF999999" Padding="3 0 0 3"/>
+                </WrapPanel>
+
+                <!-- Medal -->
+                <Image Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Source="/Resources/Icons/medal.png"/>
+
+                <!-- Status -->
+                <TextBlock Grid.Column="2" Grid.Row="2" Text="{Binding MostAttendedTourOfYear.Status}"  HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 2" FontWeight="Bold"></TextBlock>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

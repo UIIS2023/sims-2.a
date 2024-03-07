@@ -1,0 +1,28 @@
+1|Beograd|START|1
+2|Subotica|EXTRA|1
+3|Budapest|END|1
+4|Munchen|START|2
+5|Wien|EXTRA|2
+6|Novi Sad|END|2
+7|Madrid|START|3
+8|Rio de Janeiro|END|3
+9|London|START|4
+10|Dubrovnik|EXTRA|4
+11|Zadar|EXTRA|4
+12|Split|END|4
+13|Kragujevac|START|5
+14|Beograd|EXTRA|5
+15|Zagreb|EXTRA|5
+16|Split|END|5
+17|Aaaa|START|6
+18|Eeee|END|6
+19|Aaaa|START|7
+20|Eeee|END|7
+21|Beograd|START|9
+22|Mancester|END|9
+23|Beograd|START|10
+24|Sofia|END|10
+25|Beograd|START|11
+26|Sofija|END|11
+27|Beograd|START|12
+28|Skoplje|END|12

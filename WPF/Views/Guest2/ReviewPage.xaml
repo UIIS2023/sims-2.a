@@ -1,0 +1,158 @@
+﻿<Page x:Class="SOSTeam.TravelAgency.WPF.Views.Guest2.ReviewPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SOSTeam.TravelAgency.WPF.Views.Guest2"
+      xmlns:local11="clr-namespace:SOSTeam.TravelAgency.WPF.ViewModels.Owner"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="880"
+      Title="ReviewPage"
+      Background="AliceBlue">
+
+    <Page.Resources>
+         <local11:StringToIntConverter x:Key="StringToIntConverter" />
+    </Page.Resources>
+    <Grid>
+        <Border Margin="0,0,0,566">
+            <StackPanel Margin="0,10,0,-14">
+                <Button Width="195" Height="36" Margin="600,26,27,100" BorderThickness="1,1,2,2" Command="{Binding HelpCommand}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/Icons/help--v1.png" Height="33" Width="38"></Image>
+                        <TextBlock  Text=" Tutorijal (Ctrl+h)" FontSize="20" FontFamily="Microsoft Sans Serif" Height="22"></TextBlock>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Border>
+        <Border Margin="0,689,0,0">
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                <Button BorderThickness="1,1,2,2" Height="74" Width="440" Content="Oceni" FontSize="24" Command="{Binding CreateReviewCommand}"></Button>
+                <Button BorderThickness="1,1,2,2" Height="74" Width="440" Content="Nazad (Ctrl+b)" FontSize="24" Command="{Binding BackCommand}"></Button>
+            </StackPanel>
+        </Border>
+        <Border Margin="0,109,0,95">
+            <Grid Margin="0,-23,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0" Orientation="Horizontal">
+                    <TextBlock Text="Znanje vodica:" FontSize="24" Height="39" Width="244" Margin="100,0,0,0" />
+                    <StackPanel Height="63" Margin="30,0,0,-30">
+                        <Viewbox Height="35">
+                            <RadioButton GroupName="Knowledge" IsChecked="{Binding GuideKnowledge, Mode=TwoWay, Converter={StaticResource StringToIntConverter}, ConverterParameter=1}"/>
+                        </Viewbox>
+                        <TextBlock Text="1" FontSize="24" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Height="63" Margin="30,0,0,-30">
+                        <Viewbox Height="35">
+                            <RadioButton GroupName="Knowledge" IsChecked="{Binding GuideKnowledge, Mode=TwoWay, Converter={StaticResource StringToIntConverter}, ConverterParameter=2}"/>
+                        </Viewbox>
+                        <TextBlock Text="2" FontSize="24" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Height="63" Margin="30,0,0,-30">
+                        <Viewbox Height="35">
+                            <RadioButton GroupName="Knowledge" IsChecked="{Binding GuideKnowledge, Mode=TwoWay, Converter={StaticResource StringToIntConverter}, ConverterParameter=3}"/>
+                        </Viewbox>
+                        <TextBlock Text="3" FontSize="24" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Height="63" Margin="30,0,0,-30">
+                        <Viewbox Height="35">
+                            <RadioButton GroupName="Knowledge" IsChecked="{Binding GuideKnowledge, Mode=TwoWay, Converter={StaticResource StringToIntConverter}, ConverterParameter=4}"/>
+                        </Viewbox>
+                        <TextBlock Text="4" FontSize="24" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Height="63" Margin="30,0,0,-30">
+                        <Viewbox Height="35">
+                            <RadioButton GroupName="Knowledge" IsChecked="{Binding GuideKnowledge, Mode=TwoWay, Converter={StaticResource StringToIntConverter}, ConverterParameter=5}"/>
+                        </Viewbox>
+                        <TextBlock Text="5" FontSize="24" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Grid.Row="1" Orientation="Horizontal">
+                    <TextBlock Text="Jezik vodica:" FontSize="24" Margin="100,0,0,0" Height="39" Width="244" />
+                    <StackPanel Height="63" Margin="30,0,0,-30">
+                        <Viewbox Height="35">
+                            <RadioButton GroupName="Language" IsChecked="{Binding GuideLanguage, Mode=TwoWay, Converter={StaticResource StringToIntConverter}, ConverterParameter=1}"/>
+                        </Viewbox>
+                        <TextBlock Text="1" FontSize="24" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Height="63" Margin="30,0,0,-30">
+                        <Viewbox Height="35">
+                            <RadioButton GroupName="Language" IsChecked="{Binding GuideLanguage, Mode=TwoWay, Converter={StaticResource StringToIntConverter}, ConverterParameter=2}"/>
+                        </Viewbox>
+                        <TextBlock Text="2" FontSize="24" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Height="63" Margin="30,0,0,-30">
+                        <Viewbox Height="35">
+                            <RadioButton GroupName="Language" IsChecked="{Binding GuideLanguage, Mode=TwoWay, Converter={StaticResource StringToIntConverter}, ConverterParameter=3}"/>
+                        </Viewbox>
+                        <TextBlock Text="3" FontSize="24" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Height="63" Margin="30,0,0,-30">
+                        <Viewbox Height="35">
+                            <RadioButton GroupName="Language" IsChecked="{Binding GuideLanguage, Mode=TwoWay, Converter={StaticResource StringToIntConverter}, ConverterParameter=4}"/>
+                        </Viewbox>
+                        <TextBlock Text="4" FontSize="24" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Height="63" Margin="30,0,0,-30">
+                        <Viewbox Height="35">
+                            <RadioButton GroupName="Language" IsChecked="{Binding GuideLanguage, Mode=TwoWay, Converter={StaticResource StringToIntConverter}, ConverterParameter=5}"/>
+                        </Viewbox>
+                        <TextBlock Text="5" FontSize="24" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Grid.Row="2" Orientation="Horizontal">
+                    <TextBlock Text="Zanimljivost ture:" FontSize="24" Margin="100,0,0,0" Height="39" Width="244" />
+                    <StackPanel Height="63" Margin="30,0,0,-30">
+                        <Viewbox Height="35">
+                            <RadioButton GroupName="Interest" IsChecked="{Binding InterestRating, Mode=TwoWay, Converter={StaticResource StringToIntConverter}, ConverterParameter=1}"/>
+                        </Viewbox>
+                        <TextBlock Text="1" FontSize="24" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Height="63" Margin="30,0,0,-30">
+                        <Viewbox Height="35">
+                            <RadioButton GroupName="Interest" IsChecked="{Binding InterestRating, Mode=TwoWay, Converter={StaticResource StringToIntConverter}, ConverterParameter=2}"/>
+                        </Viewbox>
+                        <TextBlock Text="2" FontSize="24" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Height="63" Margin="30,0,0,-30">
+                        <Viewbox Height="35">
+                            <RadioButton GroupName="Interest" IsChecked="{Binding InterestRating, Mode=TwoWay, Converter={StaticResource StringToIntConverter}, ConverterParameter=3}"/>
+                        </Viewbox>
+                        <TextBlock Text="3" FontSize="24" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Height="63" Margin="30,0,0,-30">
+                        <Viewbox Height="35">
+                            <RadioButton GroupName="Interest" IsChecked="{Binding InterestRating, Mode=TwoWay, Converter={StaticResource StringToIntConverter}, ConverterParameter=4}"/>
+                        </Viewbox>
+                        <TextBlock Text="4" FontSize="24" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Height="63" Margin="30,0,0,-30">
+                        <Viewbox Height="35">
+                            <RadioButton GroupName="Interest" IsChecked="{Binding InterestRating, Mode=TwoWay, Converter={StaticResource StringToIntConverter}, ConverterParameter=5}"/>
+                        </Viewbox>
+                        <TextBlock Text="5" FontSize="24" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Grid.Row="3" Orientation="Horizontal">
+                    <TextBlock Text="Dodatan komentar:" FontSize="24" Margin="100,0,0,0" Height="39" Width="275" />
+                    <TextBox Width="440" Height="46" FontSize="24" Text="{Binding Comment,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                </StackPanel>
+                <StackPanel Grid.Row="4" Orientation="Horizontal">
+                    <TextBlock Text="Unesi sliku (opciono):" FontSize="24" Margin="100,0,0,0" Height="39" Width="275" />
+                    <TextBox IsReadOnly="True"  Width="272" Height="46" FontSize="18" Text="{Binding ImageUrl,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                    <Button Background="White" Width="54" Height="51" Margin="30,0,0,0" Command="{Binding AddImageCommand}">
+                        <Image Source="/Resources/Icons/plusicon.png"  />
+                    </Button>
+                    <Button Background="White" Width="54" Height="51" Margin="30,0,0,0" Command="{Binding DeleteImageCommand}">
+                        <Image Source="/Resources/Icons/minus.png"  />
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>

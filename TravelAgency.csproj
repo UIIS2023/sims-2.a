@@ -1,0 +1,662 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>SOSTeam.TravelAgency</RootNamespace>
+    <StartupObject></StartupObject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="WPF\Creators\TourGuide\**" />
+    <EmbeddedResource Remove="WPF\Creators\TourGuide\**" />
+    <None Remove="WPF\Creators\TourGuide\**" />
+    <Page Remove="WPF\Creators\TourGuide\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Icons\account.png" />
+    <None Remove="Resources\Icons\active_tour.png" />
+    <None Remove="Resources\Icons\Add.png" />
+    <None Remove="Resources\Icons\arrowchange.png" />
+    <None Remove="Resources\Icons\arrow_drop.png" />
+    <None Remove="Resources\Icons\back_button.png" />
+    <None Remove="Resources\Icons\bin.png" />
+    <None Remove="Resources\Icons\bin_light.png" />
+    <None Remove="Resources\Icons\book.png" />
+    <None Remove="Resources\Icons\building.jpg" />
+    <None Remove="Resources\Icons\building.png" />
+    <None Remove="Resources\Icons\burger_menu.png" />
+    <None Remove="Resources\Icons\calendar_blank_light.png" />
+    <None Remove="Resources\Icons\calendar_year.png" />
+    <None Remove="Resources\Icons\cancel.png" />
+    <None Remove="Resources\Icons\cancel_light.png" />
+    <None Remove="Resources\Icons\checkpoint.png" />
+    <None Remove="Resources\Icons\checkpoint_light.png" />
+    <None Remove="Resources\Icons\checkpoint_no.png" />
+    <None Remove="Resources\Icons\checkpoint_unknown.png" />
+    <None Remove="Resources\Icons\checkpoint_yes.png" />
+    <None Remove="Resources\Icons\clock.png" />
+    <None Remove="Resources\Icons\clock_light.png" />
+    <None Remove="Resources\Icons\cold-icon.png" />
+    <None Remove="Resources\Icons\comment.png" />
+    <None Remove="Resources\Icons\demo.png" />
+    <None Remove="Resources\Icons\earth.png" />
+    <None Remove="Resources\Icons\earth2.png" />
+    <None Remove="Resources\Icons\earth_light.png" />
+    <None Remove="Resources\Icons\exclamation_star.png" />
+    <None Remove="Resources\Icons\firework.png" />
+    <None Remove="Resources\Icons\flag.png" />
+    <None Remove="Resources\Icons\forums.jpg" />
+    <None Remove="Resources\Icons\forums.png" />
+    <None Remove="Resources\Icons\free-user-icon-3296-thumb.png" />
+    <None Remove="Resources\Icons\guest.png" />
+    <None Remove="Resources\Icons\Guest1\bin.png" />
+    <None Remove="Resources\Icons\Guest1\guests.png" />
+    <None Remove="Resources\Icons\Guest1\inbox.png" />
+    <None Remove="Resources\Icons\Guest1\info-icon.png" />
+    <None Remove="Resources\Icons\Guest1\list-square-icon.png" />
+    <None Remove="Resources\Icons\Guest1\log_out.png" />
+    <None Remove="Resources\Icons\Guest1\plusnotext.png" />
+    <None Remove="Resources\Icons\Guest1\search.png" />
+    <None Remove="Resources\Icons\Guest1\send.png" />
+    <None Remove="Resources\Icons\Guest1\statuses.png" />
+    <None Remove="Resources\Icons\Guest1\superGuest.png" />
+    <None Remove="Resources\Icons\Guest1\tour_icon.png" />
+    <None Remove="Resources\Icons\Guest1\user_ikonica2.png" />
+    <None Remove="Resources\Icons\Guest1\user_siluet.png" />
+    <None Remove="Resources\Icons\Guest1\verification.png" />
+    <None Remove="Resources\Icons\guests_with_text.png" />
+    <None Remove="Resources\Icons\guests_with_text_light.png" />
+    <None Remove="Resources\Icons\guest_light.png" />
+    <None Remove="Resources\Icons\help--v1.png" />
+    <None Remove="Resources\Icons\home.jpg" />
+    <None Remove="Resources\Icons\home.png" />
+    <None Remove="Resources\Icons\home_owner.png" />
+    <None Remove="Resources\Icons\hot-icon.png" />
+    <None Remove="Resources\Icons\info-icon.png" />
+    <None Remove="Resources\Icons\kalendar.png" />
+    <None Remove="Resources\Icons\kalendar_datumi.png" />
+    <None Remove="Resources\Icons\kalendar_datumi.png" />
+    <None Remove="Resources\Icons\language.png" />
+    <None Remove="Resources\Icons\language_light.png" />
+    <None Remove="Resources\Icons\left_arrow.jpg" />
+    <None Remove="Resources\Icons\left_arrow.png" />
+    <None Remove="Resources\Icons\left_arrow_owner.png" />
+    <None Remove="Resources\Icons\list-square-icon.png" />
+    <None Remove="Resources\Icons\livetour.png" />
+    <None Remove="Resources\Icons\logged_user.png" />
+    <None Remove="Resources\Icons\logged_user_black.png" />
+    <None Remove="Resources\Icons\log_out.png" />
+    <None Remove="Resources\Icons\log_out_burger_menu.png" />
+    <None Remove="Resources\Icons\medal.png" />
+    <None Remove="Resources\Icons\minus.png" />
+    <None Remove="Resources\Icons\new_notifications.png" />
+    <None Remove="Resources\Icons\notification.png" />
+    <None Remove="Resources\Icons\notification_box.png" />
+    <None Remove="Resources\Icons\notif_bell.jpg" />
+    <None Remove="Resources\Icons\notif_bell.png" />
+    <None Remove="Resources\Icons\num_of_req.png" />
+    <None Remove="Resources\Icons\Pencil.png" />
+    <None Remove="Resources\Icons\pencil.png" />
+    <None Remove="Resources\Icons\people.png" />
+    <None Remove="Resources\Icons\pdf_report.png" />
+    <None Remove="Resources\Icons\Pencil.png" />
+    <None Remove="Resources\Icons\pencil.png" />
+    <None Remove="Resources\Icons\pencil_light.png" />
+    <None Remove="Resources\Icons\plus.png" />
+    <None Remove="Resources\Icons\plusicon.png" />
+    <None Remove="Resources\Icons\question.png" />
+    <None Remove="Resources\Icons\redflag.png" />
+    <None Remove="Resources\Icons\refresh.png" />
+    <None Remove="Resources\Icons\renovations.jpg" />
+    <None Remove="Resources\Icons\renovations.png" />
+    <None Remove="Resources\Icons\reported.png" />
+    <None Remove="Resources\Icons\request.png" />
+    <None Remove="Resources\Icons\requests.jpg" />
+    <None Remove="Resources\Icons\requests.png" />
+    <None Remove="Resources\Icons\reserved.png" />
+    <None Remove="Resources\Icons\review.png" />
+    <None Remove="Resources\Icons\rewies.jpg" />
+    <None Remove="Resources\Icons\rewies.png" />
+    <None Remove="Resources\Icons\right_arrow.jpg" />
+    <None Remove="Resources\Icons\right_arrow.png" />
+    <None Remove="Resources\Icons\search.png" />
+    <None Remove="Resources\Icons\search_reaquest.png" />
+    <None Remove="Resources\Icons\settings.png" />
+    <None Remove="Resources\Icons\sos_logo.png" />
+    <None Remove="Resources\Icons\star.png" />
+    <None Remove="Resources\Icons\star_white.png" />
+    <None Remove="Resources\Icons\stat.png" />
+    <None Remove="Resources\Icons\stats_white.png" />
+    <None Remove="Resources\Icons\suggestions.jpg" />
+    <None Remove="Resources\Icons\suggestions.png" />
+    <None Remove="Resources\Icons\tour_icon.png" />
+    <None Remove="Resources\Icons\tour_icon2.png" />
+    <None Remove="Resources\Icons\tour_request.png" />
+    <None Remove="Resources\Icons\transparent.png" />
+    <None Remove="Resources\Icons\Trash.png" />
+    <None Remove="Resources\Icons\trophy.png" />
+    <None Remove="Resources\Icons\user_ikonica.png" />
+    <None Remove="Resources\Icons\user_ikonica2.png" />
+    <None Remove="Resources\Icons\video.png" />
+    <None Remove="Resources\Icons\voucher_icon.png" />
+    <None Remove="Resources\Icons\warning.png" />
+    <None Remove="Resources\Images\Guest1\basta.jpg" />
+    <None Remove="Resources\Images\Guest1\kapija-ulaz.jpg" />
+    <None Remove="Resources\Images\Guest1\kupatilo.jpg" />
+    <None Remove="Resources\Images\Guest1\pogled.jpg" />
+    <None Remove="Resources\Images\Guest1\restoran-vani.jpg" />
+    <None Remove="Resources\Images\Guest1\soba.jpg" />
+    <None Remove="Resources\Images\Owner\mastro_lindo.jpg" />
+    <None Remove="Resources\Images\Owner\mastro_lindo2.jpg" />
+    <None Remove="Resources\Images\Owner\mastro_lindo3.jpg" />
+    <None Remove="Resources\Images\Owner\mastro_lindo4.jpg" />
+    <None Remove="Resources\Images\Tours\beograd-na-vodi.jpg" />
+    <None Remove="Resources\Images\Tours\beograd.jpg" />
+    <None Remove="Resources\Images\Guest1\restoran.jpg" />
+    <None Remove="Resources\Images\Owner\casa_la_bambino_negro.jpg" />
+    <None Remove="Resources\Images\Owner\curacao_la_bamba.jpg" />
+    <None Remove="Resources\Images\Owner\grandiozo_la_hala.jpg" />
+    <None Remove="Resources\Images\Owner\grandiozo_la_hala2.jpg" />
+    <None Remove="Resources\Images\Owner\koliba_ptujcina.jpg" />
+    <None Remove="Resources\Images\Owner\lubura.jpg" />
+    <None Remove="Resources\Images\Owner\lux_malone.jpg" />
+    <None Remove="Resources\Images\Owner\pinjata_centrale.jpg" />
+    <None Remove="Resources\Images\Owner\pula_pola.jpg" />
+    <None Remove="Resources\Images\Owner\pula_pola2.jpg" />
+    <None Remove="Resources\Images\Tours\budapest.jpg" />
+    <None Remove="Resources\Images\Tours\manchester.jpg" />
+    <None Remove="Resources\Images\Tours\novi_sad.jpg" />
+    <None Remove="Resources\Images\Tours\rio.jpg" />
+    <None Remove="Resources\Images\Tours\rio_1.jpg" />
+    <None Remove="Resources\Images\Tours\rio_2.jpg" />
+    <None Remove="Resources\Images\Tours\rio_3.jpg" />
+    <None Remove="Resources\Images\Tours\sofia.jpg" />
+    <None Remove="Resources\Images\Tours\split_1.jpg" />
+    <None Remove="Resources\Images\Tours\split_2.jpg" />
+    <None Remove="Resources\Images\Tours\split_3.jpg" />
+    <None Remove="Resources\Images\Tours\subotica.jpg" />
+    <None Remove="Resources\Images\Tours\unknown_cover.jpg" />
+    <None Remove="Resources\Images\UnknownPhoto.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Application\UseCases\" />
+    <Folder Include="Resources\PDFReports\TourGuide\" />
+    <None Remove="Resources\Icons\NotificationAlertNoColor.png" />
+    <None Remove="Resources\Images\SOSlogo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\Icons\account.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\arrowchange.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\arrow_drop.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\bin.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\book.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\building.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\calendar_blank_light.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\calendar_year.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\cancel.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\cancel_light.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\checkpoint.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\checkpoint_light.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\checkpoint_no.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\checkpoint_unknown.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\checkpoint_yes.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\clock.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\cold-icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\comment.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\demo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\earth.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\earth_light.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\firework.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\flag.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\forums.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\guest.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\guests_with_text.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\guest_light.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\home_owner.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\guests_with_text_light.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\hot-icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\kalendar.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\kalendar_datumi.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\language_light.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\left_arrow.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\left_arrow_owner.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\livetour.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\logged_user.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\logged_user_black.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\log_out.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\log_out_burger_menu.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\medal.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\minus.png">
+	  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	</Content>
+    <Content Include="Resources\Icons\notification_box.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\notif_bell.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\num_of_req.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\pdf_report.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\pencil.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+	<Content Include="Resources\Icons\people.png">
+	  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	</Content>
+    <Content Include="Resources\Icons\pencil_light.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\plus.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\redflag.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\refresh.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\renovations.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+	<Content Include="Resources\Icons\notification.png">
+	  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+	<Content Include="Resources\Icons\new_notifications.png">
+	  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	</Content>  
+	<Content Include="Resources\Icons\earth2.png">
+	  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	</Content> 
+    <Content Include="Resources\Icons\question.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\reported.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\requests.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\review.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\rewies.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\right_arrow.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\search_reaquest.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\sos_logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\star.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\star_white.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\stat.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\suggestions.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\stats_white.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\tour_request.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\transparent.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\trophy.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\warning.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Guest1\basta.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Guest1\kapija-ulaz.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Guest1\kupatilo.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Guest1\pogled.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Guest1\restoran-vani.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Guest1\soba.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Owner\casa_la_bambino_negro.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Owner\curacao_la_bamba.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Owner\grandiozo_la_hala.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Owner\grandiozo_la_hala2.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Owner\koliba_ptujcina.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Owner\lubura.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Owner\lux_malone.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Owner\mastro_lindo.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Owner\mastro_lindo2.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Owner\mastro_lindo3.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Owner\mastro_lindo4.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Owner\pinjata_centrale.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Owner\pula_pola.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Owner\pula_pola2.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\left_arrow.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\right_arrow.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Tours\manchester.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Tours\sofia.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Resources\Icons\Guest1\guests.png" />
+    <Content Include="Resources\Images\Guest1\restoran.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Tours\budapest.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Tours\novi_sad.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Tours\rio_1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Tours\rio_2.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Tours\rio_3.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Tours\split_1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Tours\split_2.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Tours\split_3.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Tours\unknown_cover.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Application\UseCases\" />
+
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\Icons\burger_menu.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+
+    <Resource Include="Resources\Icons\Add.png" />
+    <Content Include="Resources\Icons\clock_light.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\bin_light.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Resources\Icons\building.jpg" />
+    <Resource Include="Resources\Icons\checkpoint.png" />
+    <Resource Include="Resources\Icons\exclamation_star.png" />
+    <Resource Include="Resources\Icons\Guest1\bin.png" />
+    <Resource Include="Resources\Icons\Guest1\inbox.png" />
+    <Resource Include="Resources\Icons\Guest1\info-icon.png" />
+    <Resource Include="Resources\Icons\Guest1\list-square-icon.png" />
+    <Resource Include="Resources\Icons\Guest1\log_out.png" />
+    <Resource Include="Resources\Icons\Guest1\plusnotext.png" />
+    <Resource Include="Resources\Icons\Guest1\search.png" />
+    <Resource Include="Resources\Icons\Guest1\send.png" />
+    <Resource Include="Resources\Icons\Guest1\statuses.png" />
+    <Resource Include="Resources\Icons\Guest1\superGuest.png" />
+    <Resource Include="Resources\Icons\Guest1\tour_icon.png" />
+    <Resource Include="Resources\Icons\Guest1\user_ikonica2.png" />
+    <Resource Include="Resources\Icons\Guest1\user_siluet.png" />
+    <Resource Include="Resources\Icons\Guest1\verification.png" />
+    <Resource Include="Resources\Icons\forums.jpg" />
+    <Resource Include="Resources\Icons\home.jpg" />
+    <Resource Include="Resources\Icons\kalendar_datumi.png" />
+	<Resource Include="Resources\Icons\notification.png" />
+	<Resource Include="Resources\Icons\new_notifications.png" />
+    <Resource Include="Resources\Icons\language.png" />
+    <Resource Include="Resources\Icons\NotificationAlertNoColor.png" />
+    <Resource Include="Resources\Icons\notif_bell.jpg" />
+    <Resource Include="Resources\Icons\Pencil.png" />
+    <Resource Include="Resources\Icons\plusicon.png" />
+    <Resource Include="Resources\Icons\tour_icon2.png" />
+    <Resource Include="Resources\Icons\renovations.jpg" />
+    <Resource Include="Resources\Icons\requests.jpg" />
+    <Resource Include="Resources\Icons\rewies.jpg" />
+    <Resource Include="Resources\Icons\suggestions.jpg" />
+    <Resource Include="Resources\Icons\Trash.png" />
+    <Resource Include="Resources\Icons\user_ikonica2.png" />
+    <Resource Include="Resources\Images\SOSlogo.png" />
+	<Resource Include="Resources\Icons\earth2.png" />
+	<Resource Include="Resources\Icons\minus.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Extended.Wpf.Toolkit" Version="4.5.0" />
+    <PackageReference Include="iTextSharp" Version="5.5.13.3" />
+    <PackageReference Include="LibVLCSharp.WPF" Version="3.7.0" />
+    <PackageReference Include="LiveCharts" Version="0.9.7" />
+    <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
+    <PackageReference Include="MicrosoftExpressionInteractions" Version="3.0.40218" />
+    <PackageReference Include="PdfiumViewer" Version="2.13.0" />
+    <PackageReference Include="PdfSharp" Version="1.50.5147" />
+    <PackageReference Include="Syncfusion.Pdf.Net.Core" Version="21.2.9" />
+    <PackageReference Include="Syncfusion.PdfViewer.WPF" Version="21.2.9" />
+    <PackageReference Include="System.Drawing.Common" Version="7.0.0" />
+    <PackageReference Include="System.Windows.Interactivity.WPF" Version="2.0.20525" />
+  </ItemGroup>
+
+  <ItemGroup>
+	  <Reference Include="System.Windows.Interactivity" />
+	  <Reference Include="Microsoft.Expression.Interactions" />
+	  <Reference Include="Xceed.Wpf.AvalonDock.NET5">
+      <HintPath>bin\Debug\net6.0-windows\Xceed.Wpf.AvalonDock.NET5.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit.NET5">
+      <HintPath>bin\Debug\net6.0-windows\Xceed.Wpf.Toolkit.NET5.dll</HintPath>
+    </Reference>
+    <PackageReference Include="Prism.Core" Version="8.1.97" />
+    <PackageReference Include="Prism.Wpf" Version="8.1.97" />
+    <PackageReference Include="System.Runtime" Version="4.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Icons\active_tour.png" />
+    <Resource Include="Resources\Icons\back_button.png" />
+    <Resource Include="Resources\Icons\help--v1.png" />
+    <Resource Include="Resources\Icons\home.png" />
+    <Resource Include="Resources\Icons\info-icon.png" />
+    <Resource Include="Resources\Icons\list-square-icon.png" />
+    <Resource Include="Resources\Icons\request.png" />
+    <Resource Include="Resources\Icons\reserved.png" />
+    <Resource Include="Resources\Icons\search.png" />
+    <Resource Include="Resources\Icons\settings.png" />
+    <Resource Include="Resources\Icons\tour_icon.png" />
+    <Resource Include="Resources\Icons\user_ikonica.png" />
+    <Resource Include="Resources\Icons\video.png" />
+    <Resource Include="Resources\Icons\voucher_icon.png" />
+    <Content Include="Resources\Images\Tours\beograd-na-vodi.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Tours\beograd.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Tours\subotica.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Resources\Images\UnknownPhoto.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="WPF\Views\Owner\RenovationAddPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Resources\Data\tours.csv">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="WPF\Views\Owner\RenovationAddPage.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
+</Project>

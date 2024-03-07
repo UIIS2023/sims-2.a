@@ -1,0 +1,160 @@
+﻿<Page x:Class="SOSTeam.TravelAgency.WPF.Views.Owner.GuestReviewPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SOSTeam.TravelAgency.WPF.Views.Owner"
+      xmlns:converter="clr-namespace:SOSTeam.TravelAgency.WPF.ViewModels.Owner"
+      mc:Ignorable="d" 
+       d:DesignHeight="662" d:DesignWidth="804"
+      Title="Guest Review">
+    <Page.Resources>
+            <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="{StaticResource OwnerFont}" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="Margin" Value="10" />
+        </Style>
+        <Geometry x:Key="StarGeometry">M 50,0 L 64.14,36.36 L 100,36.36 L 70.71,60 L 82.84,96.36 L 50,76.37 L 17.16,96.36 L 29.29,60 L 0,36.36 L 35.86,36.36 Z</Geometry>
+        <Style TargetType="Path">
+            <Setter Property="Stretch" Value="Uniform"/>
+            <Setter Property="Width" Value="20"/>
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="Stroke" Value="Black"/>
+            <Setter Property="StrokeThickness" Value="2"/>
+        </Style>
+
+        <converter:StringToIntConverter x:Key="StringToIntConverter" />
+        <converter:RatingToBrushConverter x:Key="RatingToBrushConverter"/>
+    </Page.Resources>
+
+    <Grid Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Margin="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="4*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Label Content="Ocenite gosta " FontSize="25" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Image Source="/Resources/Icons/user_ikonica2.png" Width="130" Height="130" Margin="0,15,0,0"></Image>
+                    <Label Content="{Binding Path=GuestUser.Username, UpdateSourceTrigger=PropertyChanged}" Margin="3" Height="Auto" FontSize="24" HorizontalAlignment="Center" />
+                    <Label Content="u smeštaju" Margin="3" Height="Auto" FontSize="20" HorizontalAlignment="Center" />
+                    <Label Content="{Binding Path=Accommodation.Name, UpdateSourceTrigger=PropertyChanged}" Margin="3" Height="Auto" FontSize="20" HorizontalAlignment="Center" />
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Column="1" Width="AUto" Height="Auto" Margin="0,0,40,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="120"></RowDefinition>
+                    <RowDefinition Height="80"></RowDefinition>
+                    <RowDefinition Height="80"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="1" Grid.Column="0"  Content ="Ćistoća:" VerticalAlignment="Center"></Label>
+                <Label Grid.Row="2" Grid.Column="0"  Content ="Poštovanje pravila:" VerticalAlignment="Center"></Label>
+                <WrapPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
+                    <Button Command="{Binding RateCleanliness}" CommandParameter="1" Background="Transparent" BorderThickness="0" Style="{StaticResource OwnerButtons}" RenderTransformOrigin="0.5,0.5">
+                        <Button.RenderTransform>
+                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                        </Button.RenderTransform>
+                        <Path Data="{StaticResource StarGeometry}" Fill="{Binding CleanlinessRating, Converter={StaticResource RatingToBrushConverter}, ConverterParameter=1}" />
+                    </Button>
+                    <Button Command="{Binding RateCleanliness}" CommandParameter="2" Background="Transparent" BorderThickness="0" Style="{StaticResource OwnerButtons}" RenderTransformOrigin="0.5,0.5">
+                        <Button.RenderTransform>
+                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                        </Button.RenderTransform>
+                        <Path Data="{StaticResource StarGeometry}" Fill="{Binding CleanlinessRating, Converter={StaticResource RatingToBrushConverter}, ConverterParameter=2}" />
+                    </Button>
+                    <Button Command="{Binding RateCleanliness}" CommandParameter="3" Background="Transparent" BorderThickness="0" Style="{StaticResource OwnerButtons}" RenderTransformOrigin="0.5,0.5">
+                        <Button.RenderTransform>
+                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                        </Button.RenderTransform>
+                        <Path Data="{StaticResource StarGeometry}" Fill="{Binding CleanlinessRating, Converter={StaticResource RatingToBrushConverter}, ConverterParameter=3}" />
+                    </Button>
+                    <Button Command="{Binding RateCleanliness}" CommandParameter="4" Background="Transparent" BorderThickness="0" Style="{StaticResource OwnerButtons}" RenderTransformOrigin="0.5,0.5">
+                        <Button.RenderTransform>
+                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                        </Button.RenderTransform>
+                        <Path Data="{StaticResource StarGeometry}" Fill="{Binding CleanlinessRating, Converter={StaticResource RatingToBrushConverter}, ConverterParameter=4}" />
+                    </Button>
+                    <Button Command="{Binding RateCleanliness}" CommandParameter="5" Background="Transparent" BorderThickness="0" Style="{StaticResource OwnerButtons}" RenderTransformOrigin="0.5,0.5">
+                        <Button.RenderTransform>
+                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                        </Button.RenderTransform>
+                        <Path Data="{StaticResource StarGeometry}" Fill="{Binding CleanlinessRating, Converter={StaticResource RatingToBrushConverter}, ConverterParameter=5}" />
+                    </Button>
+                </WrapPanel>
+
+
+                <WrapPanel Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">
+                    <Button Command="{Binding RateRules}" CommandParameter="1" Background="Transparent" BorderThickness="0" Style="{StaticResource OwnerButtons}" RenderTransformOrigin="0.5,0.5">
+                        <Button.RenderTransform>
+                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                        </Button.RenderTransform>
+                        <Path Data="{StaticResource StarGeometry}" Fill="{Binding RulesRating, Converter={StaticResource RatingToBrushConverter}, ConverterParameter=1}" />
+                    </Button>
+                    <Button Command="{Binding RateRules}" CommandParameter="2" Background="Transparent" BorderThickness="0" Style="{StaticResource OwnerButtons}" RenderTransformOrigin="0.5,0.5">
+                        <Button.RenderTransform>
+                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                        </Button.RenderTransform>
+                        <Path Data="{StaticResource StarGeometry}" Fill="{Binding RulesRating, Converter={StaticResource RatingToBrushConverter}, ConverterParameter=2}" />
+                    </Button>
+                    <Button Command="{Binding RateRules}" CommandParameter="3" Background="Transparent" BorderThickness="0" Style="{StaticResource OwnerButtons}" RenderTransformOrigin="0.5,0.5">
+                        <Button.RenderTransform>
+                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                        </Button.RenderTransform>
+                        <Path Data="{StaticResource StarGeometry}" Fill="{Binding RulesRating, Converter={StaticResource RatingToBrushConverter}, ConverterParameter=3}" />
+                    </Button>
+                    <Button Command="{Binding RateRules}" CommandParameter="4" Background="Transparent" BorderThickness="0" Style="{StaticResource OwnerButtons}" RenderTransformOrigin="0.5,0.5">
+                        <Button.RenderTransform>
+                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                        </Button.RenderTransform>
+                        <Path Data="{StaticResource StarGeometry}" Fill="{Binding RulesRating, Converter={StaticResource RatingToBrushConverter}, ConverterParameter=4}" />
+                    </Button>
+                    <Button Command="{Binding RateRules}" CommandParameter="5" Background="Transparent" BorderThickness="0" Style="{StaticResource OwnerButtons}" RenderTransformOrigin="0.5,0.5">
+                        <Button.RenderTransform>
+                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                        </Button.RenderTransform>
+                        <Path Data="{StaticResource StarGeometry}" Fill="{Binding RulesRating, Converter={StaticResource RatingToBrushConverter}, ConverterParameter=5}" />
+                    </Button>
+                </WrapPanel>
+
+                <Grid Grid.Row="3" Grid.ColumnSpan="2" Height="250">
+                    <StackPanel>
+                        <Label   Content ="Komentar:" Margin="10,10,0,0"></Label>
+                        <TextBox  VerticalAlignment="Top" Text="{Binding Path=Comment, UpdateSourceTrigger=PropertyChanged}" Height="150" TextWrapping="Wrap"></TextBox>
+                    </StackPanel>
+
+                </Grid>
+
+
+            </Grid>
+
+        </Grid>
+        <Grid Grid.Row="1">
+            <Border BorderBrush="{StaticResource OwnerBorderColor}" BorderThickness="1"/>
+            <WrapPanel HorizontalAlignment="Right" VerticalAlignment="Center">
+                <Button Content="Oceni" FontSize="25" Margin="20" Width="120" Command="{Binding AddReview}" Style="{StaticResource OwnerButtons}" RenderTransformOrigin="0.5,0.5">
+                    <Button.RenderTransform>
+                        <ScaleTransform ScaleX="1" ScaleY="1" />
+                    </Button.RenderTransform>
+
+                </Button>
+                <Button Content="Odustani" FontSize="25" Margin="20"  Width="120" Command="{Binding Cancel}" Style="{StaticResource OwnerButtons}" RenderTransformOrigin="0.5,0.5">
+                    <Button.RenderTransform>
+                        <ScaleTransform ScaleX="1" ScaleY="1" />
+                    </Button.RenderTransform>
+
+                </Button>
+            </WrapPanel>
+        </Grid>
+    </Grid>
+</Page>

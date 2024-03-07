@@ -1,0 +1,311 @@
+﻿<Page x:Class="SOSTeam.TravelAgency.WPF.Views.Guest2.SearchPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SOSTeam.TravelAgency.WPF.Views.Guest2"
+      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+      Title="SearchPage" Height="800" Width="1280"
+      Background="AliceBlue">
+
+    
+    <Page.InputBindings>
+        <KeyBinding Key="B" Modifiers="Control" Command="{Binding BackCommand}" />
+    </Page.InputBindings>
+    
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/MainWindowStyles.xaml" />
+                <ResourceDictionary Source="/Styles/ButtonStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    
+    <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <!--Navigation menu-->
+                <ColumnDefinition Width="286"/>
+                <!--Content section-->
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Border CornerRadius="10,0,0,10"
+                    Grid.Column="0" Margin="0,0,1,0">
+
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0.7">
+                        <GradientStop Color="{StaticResource primaryBackColor1}" Offset="0"></GradientStop>
+                        <GradientStop Color="{StaticResource primaryBackColor2}" Offset="1"></GradientStop>
+                    </LinearGradientBrush>
+                </Border.Background>
+
+                <StackPanel>
+                    <StackPanel Orientation="Vertical"
+                                Height="150"
+                                Margin="15,25,0,40" Width="220">
+                        <Image Source="/Resources/Icons/user_ikonica.png" Height="126" Width="229"/>
+                        <Label Content="{Binding LoggedInUser.Username}" FontSize="18" FontFamily="Microsoft Sans Serif" Height="32" Width="160" HorizontalContentAlignment="Center"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical" Margin="10,-15,10,10" Height="396">
+                        <Label Content="Drzava" Margin="0,0,0,5" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Left" FontFamily="Microsoft Sans Serif" Width="78" ></Label>
+                        <ComboBox Name="country" Height="37" Margin="0,0,0,5"
+                                  ItemsSource="{Binding Countries}"
+                                  SelectedValue="SearchedCountry"
+                                  FontSize="18"></ComboBox>
+                        <Label Content="Grad" Margin="0,0,0,5" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Left" FontFamily="Microsoft Sans Serif" Width="78" ></Label>
+                        <ComboBox Name="city" Height="37" Margin="0,0,0,5"
+                                  ItemsSource="{Binding Cities}"
+                                  SelectedValue="SearchedCity"
+                                  FontSize="18"></ComboBox>
+                        <Label Content="Jezik" Margin="0,0,0,5" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Left" FontFamily="Microsoft Sans Serif" Width="78" ></Label>
+                        <ComboBox Name="language" Height="37" Margin="0,0,0,5"
+                                  ItemsSource="{Binding Languages}"
+                                  SelectedValue="SearchedLanguage"
+                                  FontSize="18"></ComboBox>
+                        <Label Content="Trajanje (sati)" Margin="0,0,0,5" FontSize="20" HorizontalAlignment="Left" FontFamily="Microsoft Sans Serif" Width="146" />
+                        <TextBox Name="duration" FontSize="18"  Height="37" Margin="0,0,0,5" Text="{Binding Path=SearchedDuration,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                        <Label Content="Broj ljudi" Margin="0,0,0,5" FontSize="20" HorizontalAlignment="Left" FontFamily="Microsoft Sans Serif" Width="93" />
+                        <TextBox Name="ocupancy" FontSize="18" Height="37" Margin="0,0,0,5" Text="{Binding Path=SearchedOcupancy,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                    </StackPanel>
+
+                    <Button Style="{StaticResource MenuButtons}" BorderThickness="1,1,2,2" Command="{Binding SearchCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Resources/Icons/search.png" Height="40" Width="38"/>
+                            <TextBlock Text="  Pretrazite" Height="24" Width="190"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Style="{StaticResource MenuButtons}" BorderThickness="1,1,2,2" Command="{Binding BackCommand}" >
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Resources/Icons/back_button.png" Height="47" Width="38"/>
+                            <TextBlock Text="  Nazad (Ctrl + b)" Height="24" Width="192"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+
+            </Border>
+
+            <Border CornerRadius="0,10,10,0"
+                    Grid.Column="1" Margin="10,10,14,10">
+                <ScrollViewer HorizontalAlignment="Right" Width="990">
+                    <!-- Your content here -->
+                    <Grid Height="1160">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="380"/>
+                            <RowDefinition Height="380"/>
+                            <RowDefinition Height="380"/>
+                        </Grid.RowDefinitions>
+
+                        <Border Grid.Row="0" >
+                            <Grid>
+                                <TextBlock Text="Sve ture" FontSize="20" Margin="30,0,0,0"></TextBlock>
+                                <Border Margin="30,30,30,10" BorderBrush="Black" BorderThickness="1">
+                                    <Grid>
+                                        <StackPanel Margin="0,0,837,0">
+                                            <Button Height="86" Background="AliceBlue" BorderBrush="AliceBlue" Margin="0,130,0,0" IsEnabled="{Binding ArrowCommands.IsButtonsEnabled}" Command="{Binding ArrowCommands.LeftArrowCommand}" Width="72">
+                                                <Image Source="/Resources/Icons/left_arrow.png"></Image>
+                                            </Button>
+                                        </StackPanel>
+
+                                        <StackPanel Margin="837,0,0,0">
+                                            <Button Height="86" Background="AliceBlue" BorderBrush="AliceBlue" Margin="0,130,0,0" IsEnabled="{Binding ArrowCommands.IsButtonsEnabled}" Command="{Binding ArrowCommands.RightArrowCommand}">
+                                                <Image Source="/Resources/Icons/right_arrow.png"></Image>
+                                            </Button>
+                                        </StackPanel>
+
+
+                                        <ItemsControl ItemsSource="{Binding TourViewModels}" Margin="25,0,74,0">
+                                            <ItemsControl.ItemContainerStyle>
+                                                <Style>
+                                                    <Setter Property="Control.Margin" Value="0 0 -30 0" />
+                                                </Style>
+                                            </ItemsControl.ItemContainerStyle>
+                                            <ItemsControl.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <StackPanel Orientation="Horizontal"/>
+                                                </ItemsPanelTemplate>
+                                            </ItemsControl.ItemsPanel>
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Grid Margin="74,0,74,0">
+                                                        <StackPanel>
+                                                            <Border Height="226" Width="300" Margin="0,10,0,0">
+                                                                <Button Command="{Binding TourDetailsCommand}" Background="AliceBlue" BorderBrush="AliceBlue">
+                                                                    <Image Source="{Binding ImagePath}" />
+                                                                </Button>
+                                                            </Border>
+                                                            <TextBlock TextAlignment="Center" Text="{Binding Name}" FontSize="20"/>
+                                                            <TextBlock TextAlignment="Center" FontSize="18" >
+                                                                                        <InlineUIContainer>
+                                                                                            <Image Source="/Resources/Icons/checkpoint.png" Width="20" Height="20" />
+                                                                                        </InlineUIContainer>
+                                                                                        <Run Text="{Binding LocationFullName}" />
+                                                            </TextBlock>
+                                                            <TextBlock TextAlignment="Center" FontSize="18">
+                                                                                        <InlineUIContainer>
+                                                                                            <Image Source="/Resources/Icons/language.png" Width="20" Height="20" />
+                                                                                        </InlineUIContainer>
+                                                                                        <Run Text="{Binding Language}"/>
+                                                            </TextBlock>
+                                                            <TextBlock TextAlignment="Center" FontSize="18">
+                                                                                        <InlineUIContainer>
+                                                                                            <Image Source="/Resources/Icons/clock.png" Width="20" Height="20" />
+                                                                                        </InlineUIContainer>
+                                                                                        <Run Text="{Binding Duration, StringFormat={}{0}h}"/>
+                                                            </TextBlock>
+                                                        </StackPanel>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+                        </Border>
+
+                        <Border Grid.Row="1" >
+                            <Grid>
+                                <TextBlock Text="Ture po Srbiji" FontSize="20" Margin="30,0,0,0"></TextBlock>
+                                <Border Margin="30,30,30,10" BorderBrush="Black" BorderThickness="1">
+                                    <Grid>
+                                        <StackPanel Margin="0,0,837,0">
+                                            <Button Height="86" Background="AliceBlue" BorderBrush="AliceBlue" Margin="0,130,0,0" IsEnabled="{Binding ArrowCommands.IsSecondButtonsEnabled}" Command="{Binding ArrowCommands.SecondLeftArrowCommand}" Width="72">
+                                                <Image Source="/Resources/Icons/left_arrow.png"></Image>
+                                            </Button>
+                                        </StackPanel>
+
+                                        <StackPanel Margin="837,0,0,0">
+                                            <Button Height="86" Background="AliceBlue" BorderBrush="AliceBlue" Margin="0,130,0,0" IsEnabled="{Binding ArrowCommands.IsSecondButtonsEnabled}" Command="{Binding ArrowCommands.SecondRightArrowCommand}">
+                                                <Image Source="/Resources/Icons/right_arrow.png"></Image>
+                                            </Button>
+                                        </StackPanel>
+
+
+                                        <ItemsControl ItemsSource="{Binding SerbiaTourViewModels}" Margin="25,0,74,0">
+                                            <ItemsControl.ItemContainerStyle>
+                                                <Style>
+                                                    <Setter Property="Control.Margin" Value="0 0 -30 0" />
+                                                </Style>
+                                            </ItemsControl.ItemContainerStyle>
+                                            <ItemsControl.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <StackPanel Orientation="Horizontal"/>
+                                                </ItemsPanelTemplate>
+                                            </ItemsControl.ItemsPanel>
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Grid Margin="74,0,74,0">
+                                                        <StackPanel>
+                                                            <Border Height="226" Width="300" Margin="0,10,0,0">
+                                                                <Button Command="{Binding TourDetailsCommand}" Background="AliceBlue" BorderBrush="AliceBlue">
+                                                                    <Image Source="{Binding ImagePath}" />
+                                                                </Button>
+                                                            </Border>
+                                                            <TextBlock TextAlignment="Center" Text="{Binding Name}" FontSize="20"/>
+                                                            <TextBlock TextAlignment="Center" FontSize="18" >
+                                                                                        <InlineUIContainer>
+                                                                                            <Image Source="/Resources/Icons/checkpoint.png" Width="20" Height="20" />
+                                                                                        </InlineUIContainer>
+                                                                                        <Run Text="{Binding LocationFullName}" />
+                                                            </TextBlock>
+                                                            <TextBlock TextAlignment="Center" FontSize="18">
+                                                                                        <InlineUIContainer>
+                                                                                            <Image Source="/Resources/Icons/language.png" Width="20" Height="20" />
+                                                                                        </InlineUIContainer>
+                                                                                        <Run Text="{Binding Language}"/>
+                                                            </TextBlock>
+                                                            <TextBlock TextAlignment="Center" FontSize="18">
+                                                                                        <InlineUIContainer>
+                                                                                            <Image Source="/Resources/Icons/clock.png" Width="20" Height="20" />
+                                                                                        </InlineUIContainer>
+                                                                                        <Run Text="{Binding Duration, StringFormat={}{0}h}"/>
+                                                            </TextBlock>
+                                                        </StackPanel>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+                        </Border>
+
+                        <Border Grid.Row="2">
+                            <Grid>
+                                <TextBlock Text="Letnje ture" FontSize="20" Margin="30,0,0,0"></TextBlock>
+                                <Border Margin="30,30,30,10" BorderBrush="Black" BorderThickness="1">
+                                    <Grid>
+                                        <StackPanel Margin="0,0,837,0">
+                                            <Button Height="86" Background="AliceBlue" BorderBrush="AliceBlue" Margin="0,130,0,0" IsEnabled="{Binding ArrowCommands.IsThirdButtonsEnabled}" Command="{Binding ArrowCommands.ThirdLeftArrowCommand}" Width="72">
+                                                <Image Source="/Resources/Icons/left_arrow.png"></Image>
+                                            </Button>
+                                        </StackPanel>
+
+                                        <StackPanel Margin="837,0,0,0">
+                                            <Button Height="86" Background="AliceBlue" BorderBrush="AliceBlue" Margin="0,130,0,0" IsEnabled="{Binding ArrowCommands.IsThirdButtonsEnabled}" Command="{Binding ArrowCommands.ThirdRightArrowCommand}">
+                                                <Image Source="/Resources/Icons/right_arrow.png"></Image>
+                                            </Button>
+                                        </StackPanel>
+
+
+                                        <ItemsControl ItemsSource="{Binding SummerTourViewModels}" Margin="25,0,74,0">
+                                            <ItemsControl.ItemContainerStyle>
+                                                <Style>
+                                                    <Setter Property="Control.Margin" Value="0 0 -30 0" />
+                                                </Style>
+                                            </ItemsControl.ItemContainerStyle>
+                                            <ItemsControl.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <StackPanel Orientation="Horizontal"/>
+                                                </ItemsPanelTemplate>
+                                            </ItemsControl.ItemsPanel>
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Grid Margin="74,0,74,0">
+                                                        <StackPanel>
+                                                            <Border Height="226" Width="300" Margin="0,10,0,0">
+                                                                <Button Command="{Binding TourDetailsCommand}" Background="AliceBlue" BorderBrush="AliceBlue">
+                                                                    <Image Source="{Binding ImagePath}" />
+                                                                </Button>
+                                                            </Border>
+                                                            <TextBlock TextAlignment="Center" Text="{Binding Name}" FontSize="20"/>
+                                                            <TextBlock TextAlignment="Center" FontSize="18" >
+                                                                                        <InlineUIContainer>
+                                                                                            <Image Source="/Resources/Icons/checkpoint.png" Width="20" Height="20" />
+                                                                                        </InlineUIContainer>
+                                                                                        <Run Text="{Binding LocationFullName}" />
+                                                            </TextBlock>
+                                                            <TextBlock TextAlignment="Center" FontSize="18">
+                                                                                        <InlineUIContainer>
+                                                                                            <Image Source="/Resources/Icons/language.png" Width="20" Height="20" />
+                                                                                        </InlineUIContainer>
+                                                                                        <Run Text="{Binding Language}"/>
+                                                            </TextBlock>
+                                                            <TextBlock TextAlignment="Center" FontSize="18">
+                                                                                        <InlineUIContainer>
+                                                                                            <Image Source="/Resources/Icons/clock.png" Width="20" Height="20" />
+                                                                                        </InlineUIContainer>
+                                                                                        <Run Text="{Binding Duration, StringFormat={}{0}h}"/>
+                                                            </TextBlock>
+                                                        </StackPanel>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </ScrollViewer>
+            </Border>
+
+            <Grid Grid.Column="1">
+                <Frame x:Name="SearchResultFrame" NavigationUIVisibility ="Hidden"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

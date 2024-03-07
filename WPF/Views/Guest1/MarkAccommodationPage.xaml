@@ -1,0 +1,121 @@
+﻿<Page x:Class="SOSTeam.TravelAgency.WPF.Views.Guest1.MarkAccommodationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SOSTeam.TravelAgency.WPF.Views.Guest1"
+      mc:Ignorable="d" 
+      Background="LightGoldenrodYellow"
+      d:DesignHeight="752.04" d:DesignWidth="1024"
+      Title="MarkAccommodationPage">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/WPF/Views/Guest1/Styles/ButtonStyle.xaml" />
+                <ResourceDictionary Source="/WPF/Views/Guest1/Styles/ImageButtonStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid>
+        <TextBlock x:Name="AccommodationNameTb" FontSize="38" FontWeight="Black" Margin="27,10,0,646" FontStyle="Italic"
+                   Text="{Binding Path=AccNameTextBlock}"
+                   TextAlignment="Left"></TextBlock>
+
+        <Label Content="Ocjena čistoće : " FontSize="17" FontWeight="Bold" Margin="27,108,841,584"></Label>
+        <RadioButton x:Name="c1" GroupName="clean" Margin="160,119,819,594" BorderThickness="2" BorderBrush="Black"
+                     IsChecked="True" Cursor="Hand" Foreground="DarkGoldenrod" FontWeight="Bold">1</RadioButton>
+        <RadioButton x:Name="c2" GroupName="clean" Margin="160,139,819,574" BorderThickness="2" BorderBrush="Black"
+                     Cursor="Hand" Foreground="DarkGoldenrod" FontWeight="Bold">2</RadioButton>
+        <RadioButton x:Name="c3" GroupName="clean" Margin="160,159,819,554" BorderThickness="2" BorderBrush="Black"
+                     Cursor="Hand" Foreground="DarkGoldenrod" FontWeight="Bold">3</RadioButton>
+        <RadioButton x:Name="c4" GroupName="clean" Margin="160,179,819,534" BorderThickness="2" BorderBrush="Black"
+                     Cursor="Hand" Foreground="DarkGoldenrod" FontWeight="Bold">4</RadioButton>
+        <RadioButton x:Name="c5" GroupName="clean" Margin="160,199,819,514" BorderThickness="2" BorderBrush="Black"
+                     Cursor="Hand" Foreground="DarkGoldenrod" FontWeight="Bold">5</RadioButton>
+
+        <Label Content="Ocjena korektnosti vlasnika : " FontSize="17" FontWeight="Bold" Margin="221,108,540,584"></Label>
+        <RadioButton x:Name="v1" GroupName="owner" Margin="460,119,519,594" IsChecked="True" BorderThickness="2" BorderBrush="Black"
+                     Cursor="Hand" Foreground="DarkGoldenrod" FontWeight="Bold">1</RadioButton>
+        <RadioButton x:Name="v2" GroupName="owner" Margin="460,139,519,574" BorderThickness="2" BorderBrush="Black"
+                     Cursor="Hand" Foreground="DarkGoldenrod" FontWeight="Bold">2</RadioButton>
+        <RadioButton x:Name="v3" GroupName="owner" Margin="460,159,519,554" BorderThickness="2" BorderBrush="Black"
+                     Cursor="Hand" Foreground="DarkGoldenrod" FontWeight="Bold">3</RadioButton>
+        <RadioButton x:Name="v4" GroupName="owner" Margin="460,179,519,534" BorderThickness="2" BorderBrush="Black"
+                     Cursor="Hand" Foreground="DarkGoldenrod" FontWeight="Bold">4</RadioButton>
+        <RadioButton x:Name="v5" GroupName="owner" Margin="460,199,519,514" BorderThickness="2" BorderBrush="Black"
+                     Cursor="Hand" Foreground="DarkGoldenrod" FontWeight="Bold">5</RadioButton>
+
+        <Label Content="Ostavite dodatni komentar : " FontSize="17" FontWeight="Bold" Margin="27,302,716,400"></Label>
+        <TextBox x:Name="GuestComment" Margin="270,299,33,389" BorderBrush="Black" BorderThickness="2" 
+                 Text="{Binding EnteredGuestComment, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <Label Content="Ocjena hitnosti renoviranja smještaja : " FontSize="17" FontWeight="Bold" Margin="27,376,646,316"></Label>
+        <StackPanel>
+            <RadioButton x:Name="h1" GroupName="accommodation" Margin="346,387,100,347"
+                         Foreground="DarkGoldenrod" FontWeight="Bold" BorderThickness="2" BorderBrush="Black"
+                     Cursor="Hand">Nivo 1 - bilo bi dobro renovirati neke sitnice, ali sve funkcioniše kako treba i bez toga</RadioButton>
+        </StackPanel>
+        <StackPanel>
+            <RadioButton x:Name="h2" GroupName="accommodation" Margin="346,407,100,327" 
+                         Foreground="DarkGoldenrod" FontWeight="Bold" BorderThickness="2" BorderBrush="Black"
+                     Cursor="Hand">Nivo 2 - male zamjerke na smještaj koje kada bi se uklonile bi ga učinile savršenim</RadioButton>
+        </StackPanel>
+        <StackPanel>
+            <RadioButton x:Name="h3" GroupName="accommodation" Margin="346,427,100,307" 
+                         Foreground="DarkGoldenrod" FontWeight="Bold" BorderThickness="2" BorderBrush="Black"
+                     Cursor="Hand">Nivo 3 - nekoliko stvari koje su baš zasmetale bi trebalo renovirati</RadioButton>
+        </StackPanel>
+        <StackPanel>
+            <RadioButton x:Name="h4" GroupName="accommodation" Margin="346,447,100,287" 
+                         Foreground="DarkGoldenrod" FontWeight="Bold" BorderThickness="2" BorderBrush="Black"
+                     Cursor="Hand">Nivo 4 - ima dosta loših stvari i renoviranje je stvarno neophodno</RadioButton>
+        </StackPanel>
+        <StackPanel>
+            <RadioButton x:Name="h5" GroupName="accommodation" Margin="346,467,100,267" 
+                         Foreground="DarkGoldenrod" FontWeight="Bold" BorderThickness="2" BorderBrush="Black"
+                     Cursor="Hand">Nivo 5 - smještaj je u jako lošem stanju i ne vrijedi ga uopšte iznajmljivati ukoliko se ne renovira</RadioButton>
+        </StackPanel>
+
+        <Label Content="Ostavite preporuku za renoviranje : " FontSize="17" FontWeight="Bold" Margin="27,505,680,193"></Label>
+        <TextBox x:Name="GuestSuggest" Margin="330,502,33,186" BorderBrush="Black" BorderThickness="2" 
+                 Text="{Binding EnteredGuestSuggest, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <Label FontSize="17" FontWeight="Bold" Margin="546,108,230,584">Priložene slike :</Label>
+        <ListBox Name="Images" Margin="679,115,33,464" Cursor="Hand" ItemsSource="{Binding Path=SelectedImages}"
+                 BorderBrush="Black" BorderThickness="2">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="0,2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Image VerticalAlignment="Center" HorizontalAlignment="Left" 
+                               Height="135" Width="230" Source="{Binding Source}"/>
+                        <Button Margin="235,50,-5,50" Style="{StaticResource ImageButtonStyle}" 
+                                Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type ListBox}}, 
+                                Path=DataContext.DeleteSharedImageCommand}" CommandParameter="{Binding}">
+                            <StackPanel Height="35" Width="28">
+                                <Image Source="/Resources/Icons/Guest1/bin.png"></Image>
+                            </StackPanel>
+                        </Button>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <Button x:Name="MarkButton" Command="{Binding MarkAccCommand}" Content="Ocijeni"
+                Style="{StaticResource ButtonStyle}" Margin="367,620,367,57">
+        </Button>
+        <Button Command="{Binding GoBackCommand}" Width="110" Height="43" FontSize="17" Content="Nazad" 
+                Style="{StaticResource ButtonStyle}" Margin="53,620,842,57">
+        </Button>
+        <Button Style="{StaticResource ImageButtonStyle}" 
+                Command="{Binding AddImagesCommand}" Margin="626,199,330,464">
+            <StackPanel Height="89.04" Width="68" Orientation="Horizontal">
+                <Image Source="/Resources/Icons/Guest1/plusnotext.png" Height="35" Width="40"/>
+            </StackPanel>
+        </Button>
+    </Grid>
+</Page>

@@ -1,0 +1,54 @@
+﻿<Window x:Class="SOSTeam.TravelAgency.WPF.Views.TourGuide.TourRequestsPerMonthWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SOSTeam.TravelAgency.WPF.Views.TourGuide"
+        mc:Ignorable="d"
+        Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None" BorderBrush="DarkGray" BorderThickness="1"
+        Title="TourRequestsPerMonthWindow" Height="500" Width="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition />
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
+        <WrapPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
+            <Image Source="/Resources/Icons/calendar_year.png" Height="40"/>
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Year}" FontSize="20" FontWeight="DemiBold"/>
+        </WrapPanel>
+
+        <ScrollViewer Grid.Row="1" Grid.ColumnSpan="2" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
+        <StackPanel>
+            <ItemsControl HorizontalAlignment="Center" VerticalAlignment="Top" BorderBrush="Transparent" ItemsSource="{Binding NumOfTourRequestsPerMonth}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <!-- Month card -->
+                        <Grid Grid.Row="4" Height="25" Width="360" Margin="0 5 0 0 " Background="AliceBlue">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="{Binding Month}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5 0 0 0" FontSize="14"/>
+                            <Image Grid.Column="2" Source="/Resources/Icons/num_of_req.png" HorizontalAlignment="Right" Width="22" Margin="0 0 30 0"/>
+                            <TextBlock Grid.Column="2" HorizontalAlignment="Right" Text="{Binding NumOfRequestsPerMonth}" VerticalAlignment="Center" Margin="0 0 5 0" FontSize="14"/>
+                            <Border Grid.Column="0" Grid.ColumnSpan="3" BorderBrush="DarkGray" BorderThickness="0.5"></Border>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Vertical"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+        </StackPanel>
+            </ScrollViewer>
+
+            <Button x:Name="OkButton" Grid.Row="2" BorderBrush="DarkGray" BorderThickness="1" Content="OK" FontSize="30" FontWeight="DemiBold" Click="OkButton_OnClick"/>
+    </Grid>
+</Window>

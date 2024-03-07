@@ -1,0 +1,178 @@
+﻿<Page x:Class="SOSTeam.TravelAgency.WPF.Views.Owner.ForumInfoPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SOSTeam.TravelAgency.WPF.Views.Owner"
+      xmlns:vm="clr-namespace:SOSTeam.TravelAgency.WPF.ViewModels.Owner"
+      mc:Ignorable="d" 
+      d:DesignHeight="662" d:DesignWidth="804"
+      Title="ForumPage">
+    <Page.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="{StaticResource OwnerFont}" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="Margin" Value="10" />
+        </Style>
+        <Style x:Key="CenterTextBlockStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="FontFamily" Value="{StaticResource OwnerFont}" />
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Padding" Value="5"/>
+
+        </Style>
+
+
+    </Page.Resources>
+    <Grid Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Margin="30,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" Background="#a3daed" CornerRadius="20" Height="120" Margin="0,0,10,0">
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Grid VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,0">
+                        <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center" Margin="15,5,15,0">
+                                    <Image Source="/Resources/Icons/user_ikonica2.png" VerticalAlignment="Center" Width="40" Height="40" Margin="0,0,0,0"/>
+                                    <TextBlock Text="{Binding OpenerUsername}" VerticalAlignment="Center" TextWrapping="Wrap" FontFamily="{StaticResource OwnerFont}" FontSize="18" MaxWidth="105" Margin="5,0,5,0"/>
+                        </StackPanel>
+                    </Grid>
+                    <TextBlock Grid.Row="1" Margin="5,0,5,5" Text="{Binding Location}" VerticalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" FontFamily="{StaticResource OwnerFont}" FontSize="18"/>
+                    
+                </Grid>
+            </Border>
+            <Border Grid.Column="1" Background="#a3daed" CornerRadius="20" Height="120">
+                <Grid >
+                    
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock Grid.Row="1" Text="{Binding ForumInfo.Description}" VerticalAlignment="Top" TextWrapping="Wrap" FontFamily="{StaticResource OwnerFont}" FontSize="23" FontWeight="Heavy" Margin="5,0,5,0"/>
+                    </ScrollViewer>
+
+                </Grid>
+                
+            </Border>
+            
+
+
+
+
+
+
+        </Grid>
+        <Grid Grid.Row="1" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" VerticalAlignment="Top">
+                <DataGrid Width="730" Height="320" MinRowHeight="80" Background="#dceefa" RowBackground="#dceefa" AlternatingRowBackground="#d2e2ff" ItemsSource="{Binding Comments}"  AutoGenerateColumns="False" IsReadOnly="True" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+
+                    <DataGrid.RowStyle>
+                        <Style TargetType="{x:Type DataGridRow}">
+                            <Setter Property="RenderTransform">
+                                <Setter.Value>
+                                    <ScaleTransform ScaleY="0.8" />
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <EventTrigger RoutedEvent="Loaded">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                         From="0" To="1" Duration="0:0:0.4" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGrid.RowStyle>
+                    <DataGrid.Columns>
+                        
+                        <DataGridTemplateColumn Width="Auto" MinWidth="120" MaxWidth="180" Header="Korisnik" >
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate >
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Background="Transparent">
+                                        <Image Source="/Resources/Icons/user_ikonica2.png" VerticalAlignment="Center" Width="40" Height="40" Margin="5,0,0,0"/>
+                                        <TextBlock Text="{Binding Username}" VerticalAlignment="Center" TextWrapping="Wrap" FontFamily="{StaticResource OwnerFont}" FontSize="18" MaxWidth="75" Margin="5,0,10,0"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn Header="Naslov" Binding="{Binding Comment.Comment}" Width="*" MinWidth="100"
+                            ElementStyle="{StaticResource CenterTextBlockStyle}"/>
+                        <DataGridTemplateColumn Header="Prijava" Width="50">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Command="{Binding DataContext.FlagComment,
+                                          RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                    CommandParameter="{Binding}" Style="{StaticResource OwnerButtons}"
+                                    BorderThickness="0" RenderTransformOrigin="0.5,0.5">
+                                        <Button.RenderTransform>
+                                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                                        </Button.RenderTransform>
+                                        <Button.Content>
+                                            <StackPanel>
+                                                <Image Width="40" Height="40">
+                                                    <Image.Style>
+                                                        <Style TargetType="Image">
+                                                            <Setter Property="Source" Value="/Resources/Icons/flag.png" />
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Binding IsReported}" Value="True">
+                                                                    <Setter Property="Source" Value="/Resources/Icons/redflag.png" />
+                                                                </DataTrigger>
+                                                                <DataTrigger Binding="{Binding IsReported}" Value="False">
+                                                                    <Setter Property="Source" Value="/Resources/Icons/flag.png" />
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </Image.Style>
+                                                </Image>
+                                                <Label Content="{Binding ReportNum}" Margin="-10" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center"></Label>
+                                            </StackPanel>
+                                        </Button.Content>
+                                    </Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                    </DataGrid.Columns>
+
+                </DataGrid>
+            </StackPanel>
+            <Grid Grid.Row="1">
+                <Border BorderThickness="0.5" BorderBrush="{StaticResource OwnerBorderColor}" Background="{StaticResource Owner30ColorBrush}" Margin="30,20,30,30">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox Grid.Column="0" Text="{Binding NewComment,UpdateSourceTrigger=PropertyChanged}"  Background="#dceefa" FontSize="18" FontFamily="{StaticResource OwnerFont}" TextWrapping="Wrap">
+
+                        </TextBox>
+                        <Button Grid.Column="1" Command="{Binding AddComment}" Style="{StaticResource OwnerButtons}" RenderTransformOrigin="0.5,0.5">
+                            <Button.RenderTransform>
+                                <ScaleTransform ScaleX="1" ScaleY="1" />
+                            </Button.RenderTransform>
+                            <Image Source="/Resources/Icons/plusicon.png" Width="50" Height="50" ></Image>
+                        </Button>
+                    </Grid>
+
+                </Border>
+            </Grid>
+
+
+        </Grid>
+    </Grid>
+</Page>

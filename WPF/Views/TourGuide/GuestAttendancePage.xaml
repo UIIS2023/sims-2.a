@@ -1,0 +1,65 @@
+﻿<Page x:Class="SOSTeam.TravelAgency.WPF.Views.TourGuide.GuestAttendancePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="636" d:DesignWidth="430"
+      Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"
+      Title="GuestAttendancePage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="406"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <WrapPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal" Margin="0 0 0 20">
+            <Image Source="/Resources/Icons/earth.png" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50" Height="50"/>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Text="{Binding TourName}" FontSize="22"/>
+        </WrapPanel>
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="{Binding Date, StringFormat='dd.MM.yyyy. HH:mm'}"  
+                   TextAlignment="Center" FontSize="16"/>
+        <!-- Label -->
+        <WrapPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" >
+            <Image Source="/Resources/Icons/checkpoint.png" HorizontalAlignment="Left" VerticalAlignment="Center" Width="25"  Margin="5 7 0 0"/>
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding CheckpointName}" FontSize="16" Margin="0 7 0 0"/>
+        </WrapPanel>
+        
+        <ScrollViewer Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Grid.RowSpan="3" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
+            <StackPanel>
+                <ItemsControl HorizontalAlignment="Center" VerticalAlignment="Top" BorderBrush="Transparent" ItemsSource="{Binding GuestAttendanceCards}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <!-- Card -->
+                            <Grid Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Grid.RowSpan="3" Width="380" Height="50" Background="{Binding Background}" Margin="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition Width="4*"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Source="/Resources/Icons/guest.png" Width="45"></Image>
+                                <TextBlock Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding UserName}" FontSize="20"></TextBlock>
+                                <Image Grid.Column="2" Source="{Binding StatusImage}" Width="45"></Image>
+                                <Border Grid.Column="0" Grid.ColumnSpan="3" BorderBrush="DarkGray" BorderThickness="1"></Border>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Vertical"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

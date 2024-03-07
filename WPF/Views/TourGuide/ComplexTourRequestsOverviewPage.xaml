@@ -1,0 +1,66 @@
+﻿<Page x:Class="SOSTeam.TravelAgency.WPF.Views.TourGuide.ComplexTourRequestsOverviewPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SOSTeam.TravelAgency.WPF.Views.TourGuide"
+      mc:Ignorable="d" 
+      d:DesignHeight="636" d:DesignWidth="430"
+      Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"
+      Title="ComplexTourRequestsOverviewPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" BorderBrush="DarkGray" BorderThickness="0 0 0 0.5" Margin="0 0 0 3"/>
+        <Label Grid.Row="0" Content="Complex tour requests" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="DemiBold"/>
+
+
+       <Grid Grid.Row="1">
+           <Grid.RowDefinitions>
+               <RowDefinition Height="20"></RowDefinition>
+               <RowDefinition Height="40"></RowDefinition>
+               <RowDefinition></RowDefinition>
+           </Grid.RowDefinitions>
+           <TextBlock Grid.Row="1" Text="Requests" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
+           <Border Grid.Row="1" BorderBrush="DarkGray" BorderThickness="0 0 0 0.5" Margin="20 0"/>
+            <ListBox Grid.Row="2" HorizontalAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Hidden" BorderBrush="Transparent"
+                     VerticalAlignment="Top" ItemsSource="{Binding ComplexTourRequestCards}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <!-- Card -->
+                        <Grid Height="80" Width="360" Background="AliceBlue">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" BorderBrush="DarkGray" BorderThickness="1"/>
+                            <Image Grid.Column="0" Grid.Row="0" Source="/Resources/Icons/tour_request.png" HorizontalAlignment="Center" VerticalAlignment="Center" Height="87" Width="92"/>
+                            <WrapPanel Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5 0 0 0">
+                                <TextBlock Grid.Column="1" Text="Complex tour " HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="22" Margin="5 0 0 0"/>
+                                <TextBlock Grid.Column="1" Text="{Binding Id}" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="22" Margin="5 0 0 0"/>
+                            </WrapPanel>
+                            <Button Grid.Column="0" Grid.ColumnSpan="2" Background="Transparent" BorderBrush="Transparent" Cursor="Hand"
+                                    Command="{Binding DataContext.ShowComplexTourCommand, RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}"
+                                    CommandParameter="{Binding}">
+                                <Button.Style>
+                                    <Style TargetType="Button">
+                                        <Setter Property="Opacity" Value="1"/>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Opacity" Value="0"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ListBox>
+       </Grid>
+        
+    </Grid>
+</Page>

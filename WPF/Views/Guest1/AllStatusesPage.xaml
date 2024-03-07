@@ -1,0 +1,77 @@
+﻿<Page x:Class="SOSTeam.TravelAgency.WPF.Views.Guest1.AllStatusesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SOSTeam.TravelAgency.WPF.Views.Guest1"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="820"
+      Background="LightGoldenrodYellow"
+      Title="AllStatusesPage">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/WPF/Views/Guest1/Styles/DataGridStyle.xaml" />
+                <ResourceDictionary Source="/WPF/Views/Guest1/Styles/ButtonStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid Margin="205,162,0,0">
+        <Label HorizontalContentAlignment="Center" FontSize="25" FontWeight="Black" Margin="0,32,0,350" 
+               Width="615">Prikaz statusa</Label>
+        <TabControl x:Name="Tabs" GotFocus="TestFocus" BorderBrush="DarkGoldenrod" Margin="0,93,15,190" Cursor="Hand">
+            <TabItem BorderBrush="DarkGoldenrod" Height="35" FontWeight="Bold" Foreground="DarkGoldenrod" Width="392.5" Header="Zahtjevi za pomjeranje">
+                <DataGrid ItemsSource="{Binding _changedReservationRequests}" Style="{StaticResource DataGridStyle}"
+                  SelectedItem="{Binding Path=SelectedChangedReservation, UpdateSourceTrigger=PropertyChanged}"
+                  AutoGenerateColumns="False" SelectionMode="Single"
+                  IsReadOnly="True" Margin="10,0,10,0" Height="218">
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn Header="Naziv" Width="0.9*">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock TextAlignment="Center" TextWrapping="Wrap" Text="{Binding AccommodationName}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="Grad" Width="0.8*">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock TextAlignment="Center" TextWrapping="Wrap" Text="{Binding City}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn Header="Stari datumi" Binding="{Binding OldReservationString}" Width="1.3*"/>
+                        <DataGridTextColumn Header="Novi datumi" Binding="{Binding NewReservationString}" Width="1.3*"/>
+                        <DataGridTextColumn Header="Status" Binding="{Binding StatusString}" Width="0.9*"/>
+                        <DataGridTemplateColumn Header="Vlasnikov komentar" Width="1.4*">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock TextAlignment="Center" TextWrapping="Wrap" Text="{Binding ownerComment}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem BorderBrush="DarkGoldenrod" Height="35" FontWeight="Bold" Foreground="DarkGoldenrod" Width="392.5" Header="Zahtjevi za otkazivanje">
+                <DataGrid ItemsSource="{Binding _reservationCancelOptions}" Style="{StaticResource DataGridStyle}"
+                  SelectedItem="{Binding Path=SelectedCanceledReservation, UpdateSourceTrigger=PropertyChanged}"
+                  AutoGenerateColumns="False" SelectionMode="Single"
+                  IsReadOnly="True" Margin="10,0,10,0" Height="218">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Naziv" Binding="{Binding AccommodationName}" Width="1*"/>
+                        <DataGridTextColumn Header="Grad" Binding="{Binding AccommodationCity}" Width="1*"/>
+                        <DataGridTextColumn Header="Država" Binding="{Binding AccommodationCountry}" Width="1*"/>
+                        <DataGridTextColumn Header="Prvi dan" Binding="{Binding FirstDayStr}" Width="1*"/>
+                        <DataGridTextColumn Header="Poslednji dan" Binding="{Binding LastDayStr}" Width="1*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+        </TabControl>
+        <Button x:Name="ChangeButton" Command="{Binding FindNewDateCommand}" Style="{StaticResource ButtonStyle}"
+                Content="Pomjeri" Margin="135,295,133,14"/>
+        <Button x:Name="CancelResButton" Command="{Binding CancelReservationCommand}" Style="{StaticResource ButtonStyle}"
+                Content="Otkaži" Margin="475,338,-190,57" IsEnabled="False"/>
+    </Grid>
+</Page>
